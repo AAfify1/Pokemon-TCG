@@ -10,7 +10,7 @@ public class Deck {
 		
 	
 	Articuno articuno = new Articuno();
-String health = articuno.getAttack();
+
 	
 	
 	}

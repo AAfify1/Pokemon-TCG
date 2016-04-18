@@ -8,9 +8,18 @@ public class Pokemon extends Card {
 	private int noOfAttacks;
 	private int retreatCost;
 	private String weakness;
-	private String resistance;	
+	private String resistance;
+	private String[] energies=new String[20];
+	private int count=0;
+	private Boolean dead= false;
 	
 	
+	public Boolean getDead() {
+		return dead;
+	}
+	public void setDead(Boolean dead) {
+		this.dead = dead;
+	}
 	Pokemon(String name,			
 			String type,
 			Boolean isEX,
@@ -31,6 +40,20 @@ public class Pokemon extends Card {
 		this.type = type;
 		this.weakness = weakness;
 		
+	}
+	public String[] getEnergies() {
+		return energies;
+	}
+	public void setEnergies(String energy) {
+		
+		energies[count]= energy;
+		count++;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	public int getNoOfAttacks()
 	{
@@ -80,5 +103,12 @@ public class Pokemon extends Card {
 	}
 	public void setNoOfAttacks(int noOfAttacks) {
 		this.noOfAttacks = noOfAttacks;
+	}
+	
+	public void setAttacks()
+	{
+
+	
+
 	}
 }

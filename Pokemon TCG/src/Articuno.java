@@ -19,14 +19,13 @@ public class Articuno extends Pokemon{
 public void setAttacks()
 {
 
-	
-	 attack= new Attack("Freezing Wind","W,W,C,C",100," ");
+	String[] energies = {"W","W","C","C"};
+	 attack= new Attack("Freezing Wind",4,energies,100," ");
 
 }
 
-public String getAttack() {
-	System.out.println(attack.getName());
-	return attack.getName();
+public Attack getAttack() {
+	return attack;
 	
 }
 

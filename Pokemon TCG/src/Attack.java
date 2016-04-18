@@ -2,12 +2,21 @@
 public class Attack {
 
 	private String name;
-	private String energies;
+	private String[] energies;
 	private int damage;
 	private String effect;
+	private int count;
+	private Boolean canAttack=false;
 	
 	
-
+	public Attack(String name,int count, String[] energies, int damage, String effect) {
+		this.damage=damage;
+		this.name=name;
+		this.energies=energies;
+		this.effect=effect;
+		this.count=count;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -20,15 +29,13 @@ public class Attack {
 
 
 
-	public String getEnergies() {
+	public String[] getEnergies() {
 		return energies;
 	}
 
 
 
-	public void setEnergies(String energies) {
-		this.energies = energies;
-	}
+	
 
 
 
@@ -51,15 +58,47 @@ public class Attack {
 
 
 	public void setEffect(String effect) {
+
 		this.effect = effect;
 	}
 
-
-
-	public Attack(String name, String energies, int damage, String effect) {
-		this.damage=damage;
-		this.name=name;
-		this.energies=energies;
-		this.effect=effect;
+	public void canAttack(Pokemon me){
+		int checker=0;
+		String[] pokEn = me.getEnergies();
+		String[] temp = pokEn;
+		String[] attEn = this.getEnergies();
+		for(int i=0;i<this.count;i++)
+		{
+			String x = attEn[i];
+			for(int j=0;j<me.getCount();j++)
+			{
+				if(x.equals(temp[j]))
+				{
+					temp[j]="";
+					checker++;
+					break;
+				}
+			}
+			
+		}
+		if (checker==this.count){
+			canAttack= true;
+		}
+		else canAttack= false;
+		
+	}
+	public void Fight(Pokemon me,Pokemon target)
+	{
+		canAttack(me);
+		if(canAttack)
+		{
+			int newHP = target.getHP()-this.damage;
+			if(newHP>0)
+			{
+				target.setHP(newHP);
+			}
+			else target.setDead(true);
+		}
 	}
 }
+
