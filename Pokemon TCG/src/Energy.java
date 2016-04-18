@@ -14,6 +14,9 @@ public class Energy extends Card {
 	{
 		target.setEnergies(name);
 	}
-	
+	public void detach(Pokemon target)
+	{
+		target.removeEnergy(name);
+	}
 
 }

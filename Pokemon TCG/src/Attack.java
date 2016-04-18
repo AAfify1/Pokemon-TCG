@@ -63,14 +63,29 @@ public class Attack {
 	}
 
 	public void canAttack(Pokemon me){
+		
+		
 		int checker=0;
+		
 		String[] pokEn = me.getEnergies();
 		String[] temp = new String[pokEn.length];
 		System.arraycopy( pokEn, 0, temp, 0, pokEn.length );
 		String[] attEn = this.getEnergies();
+		
 		for(int i=0;i<this.count;i++)
 		{
 			String x = attEn[i];
+			if (x.equals("C")){
+				for(int j=0;j<me.getCount();j++)
+				{
+					if(!temp[j].equals(""))
+					{
+						checker++;
+						break;
+					}
+				}
+				
+			}
 			for(int j=0;j<me.getCount();j++)
 			{
 				if(x.equals(temp[j]))
@@ -93,6 +108,14 @@ public class Attack {
 		canAttack(me);
 		if(canAttack)
 		{
+			if(me.getType().equals(target.getWeakness()))
+			{
+				damage=this.damage*2;
+			}
+			if(me.getType().equals(target.getResistance()))
+			{
+				damage=this.damage-20;
+			}
 			int newHP = target.getHP()-this.damage;
 			if(newHP>0)
 			{

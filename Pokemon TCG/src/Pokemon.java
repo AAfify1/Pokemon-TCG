@@ -44,6 +44,17 @@ public class Pokemon extends Card {
 	public String[] getEnergies() {
 		return energies;
 	}
+	public void removeEnergy(String energy)
+	{
+		for(int i=0; i<count; i++)
+		{
+			if(energies[i].equals(energy))
+			{
+				energies[i] = "";
+				count--;
+			}
+		}
+	}
 	public void setEnergies(String energy) {
 		
 		energies[count]= energy;
