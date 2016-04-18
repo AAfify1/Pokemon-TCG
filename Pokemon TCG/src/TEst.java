@@ -4,7 +4,7 @@
 	
 	public static void main(String args[])
 	{
-		int x=9;
+		int x=22;
 		System.out.print(x);
 	}
 }
