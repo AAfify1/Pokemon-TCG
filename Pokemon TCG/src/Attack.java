@@ -65,7 +65,8 @@ public class Attack {
 	public void canAttack(Pokemon me){
 		int checker=0;
 		String[] pokEn = me.getEnergies();
-		String[] temp = pokEn;
+		String[] temp = new String[pokEn.length];
+		System.arraycopy( pokEn, 0, temp, 0, pokEn.length );
 		String[] attEn = this.getEnergies();
 		for(int i=0;i<this.count;i++)
 		{

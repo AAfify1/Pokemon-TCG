@@ -6,7 +6,10 @@ public class Tester {
 		Articuno arti = new Articuno();
 		Energy elec1 = new Energy("E");
 		Energy water = new Energy("W");
-		Energy Colorless = new Energy("H");
+		Energy Colorless = new Energy("C");
+		Colorless.attach(arti);
+		Colorless.attach(arti);
+		Colorless.attach(arti);
 		Colorless.attach(arti);
 		Colorless.attach(arti);
 		water.attach(arti);
