@@ -22,10 +22,6 @@ Card(String name,String cardType)
 	this.name = name;
 	this.cardType = cardType;
 }
-Card()
-{
-	
-}
 
 /**
  * Plays card                           
