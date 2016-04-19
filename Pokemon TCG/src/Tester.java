@@ -5,12 +5,12 @@ public class Tester {
 		Pikachu pika= new Pikachu();
 		Articuno arti = new Articuno();
 		Energy elec1 = new Energy("E");
-		Energy water = new Energy("W");
+		Water water = new Water();
 		water.attach(arti);
 		water.attach(arti);
 		water.attach(arti);
 		water.attach(arti);
-		water.detach(arti);
+		
 		water.detach(pika);
 		water.attach(arti);
 		elec1.attach(pika);
@@ -18,7 +18,7 @@ public class Tester {
 		pika.getAttack1().Fight(pika, arti);
 		pika.getAttack1().Fight(pika, arti);
 		arti.getAttack().Fight(arti, pika);
-		System.out.println(pika.getHP());
+		System.out.println(pika.getDead());
 		System.out.println(arti.getHP());
 		
 	}

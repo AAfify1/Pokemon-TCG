@@ -12,8 +12,15 @@ public class Pokemon extends Card {
 	private String[] energies=new String[20];
 	private int count=0;
 	private Boolean dead= false;
+	private int level = 0;
 	
 	
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public Boolean getDead() {
 		return dead;
 	}

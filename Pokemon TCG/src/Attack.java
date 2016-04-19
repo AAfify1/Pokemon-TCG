@@ -121,7 +121,11 @@ public class Attack {
 			{
 				target.setHP(newHP);
 			}
-			else target.setDead(true);
+			else
+				{
+				target.setDead(true);
+				target.setHP(0);
+				}
 		}
 	}
 }
