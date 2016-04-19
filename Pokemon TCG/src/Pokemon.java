@@ -13,6 +13,7 @@ public class Pokemon extends Card {
 	private int count=0;
 	private Boolean dead= false;
 	private int level = 0;
+	private Boolean hasAbility=false;;
 	
 	
 	public int getLevel() {
@@ -47,6 +48,32 @@ public class Pokemon extends Card {
 		this.type = type;
 		this.weakness = weakness;
 		
+	}
+	Pokemon(String name,			
+			String type,
+			Boolean isEX,
+			int HP,
+			int noOfAttacks,
+			int retreatCost,
+			String weakness,
+			String resistance,
+			Boolean hasAbility
+			)
+	{
+		super(name, "Pokemon");
+		this.HP=HP;
+		this.isEX=isEX;
+		this.name = name;
+		this.noOfAttacks = noOfAttacks;
+		this.resistance = resistance;
+		this.retreatCost = retreatCost;
+		this.type = type;
+		this.weakness = weakness;
+		this.hasAbility= hasAbility;
+		
+	}
+	public Boolean getHasAbility() {
+		return hasAbility;
 	}
 	public String[] getEnergies() {
 		return energies;
@@ -125,6 +152,13 @@ public class Pokemon extends Card {
 	
 	public void setAttacks()
 	{
+
+	
+
+	}
+	public Ability getAbility()
+	{
+		return null;
 
 	
 

@@ -2,24 +2,24 @@
 public class Tester {
 	public static void main(String [] args)
 	{
-		Pikachu pika= new Pikachu();
+		Pikachu pika =new Pikachu();
+		Electricity elec = new Electricity();
+		Fearow fer = new Fearow();
+		Shelgon shelly = new Shelgon();
 		Articuno arti = new Articuno();
-		Energy elec1 = new Energy("E");
+		Salamence saly = new Salamence();
 		Water water = new Water();
-		water.attach(arti);
-		water.attach(arti);
-		water.attach(arti);
-		water.attach(arti);
+		Fire fire = new Fire();
+		DoubleColorless doublec = new DoubleColorless();
+		doublec.attach(pika);
 		
-		water.detach(pika);
-		water.attach(arti);
-		elec1.attach(pika);
-		pika.getAttack1().Fight(pika, arti);
-		pika.getAttack1().Fight(pika, arti);
-		pika.getAttack1().Fight(pika, arti);
-		arti.getAttack().Fight(arti, pika);
-		System.out.println(pika.getDead());
-		System.out.println(arti.getHP());
+		pika.getAttack2().Fight(pika, shelly);
+		
+		
+		fire.attach(saly);
+		saly.getAttack1().Fight(saly, arti);
+		
+		System.out.println(shelly.getHP());
 		
 	}
 }

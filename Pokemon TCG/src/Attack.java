@@ -81,12 +81,15 @@ public class Attack {
 					if(!temp[j].equals(""))
 					{
 						checker++;
+						temp[j] = "";
 						break;
 					}
 				}
 				
 			}
-			for(int j=0;j<me.getCount();j++)
+			else {
+				for(int j=0;j<me.getCount();j++)
+			
 			{
 				if(x.equals(temp[j]))
 				{
@@ -95,7 +98,7 @@ public class Attack {
 					break;
 				}
 			}
-			
+			}
 		}
 		if (checker==this.count){
 			canAttack= true;
@@ -115,6 +118,15 @@ public class Attack {
 			if(me.getType().equals(target.getResistance()))
 			{
 				damage=this.damage-20;
+			}
+			if(target.getHasAbility())
+			{
+				Ability a = target.getAbility();
+				String type = a.getType();
+				if(a.getWhenAttacked()&&type.equals("inDmgRed"))
+				{
+					damage = damage - a.getInDmgRed();
+				}
 			}
 			int newHP = target.getHP()-this.damage;
 			if(newHP>0)

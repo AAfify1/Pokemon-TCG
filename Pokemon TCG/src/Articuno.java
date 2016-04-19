@@ -1,7 +1,7 @@
 
 public class Articuno extends Pokemon{
 	
-	private Attack attack;
+	private Attack attack1;
 
 	public Articuno()
 	{
@@ -20,12 +20,12 @@ public void setAttacks()
 {
 
 	String[] energies = {"W","W","C","C"};
-	 attack= new Attack("Freezing Wind",4,energies,100," ");
+	 attack1= new Attack("Freezing Wind",4,energies,100," ");
 
 }
 
-public Attack getAttack() {
-	return attack;
+public Attack getAttack1() {
+	return attack1;
 	
 }
 

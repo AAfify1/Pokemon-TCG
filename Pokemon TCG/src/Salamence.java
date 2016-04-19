@@ -28,7 +28,7 @@ public class Salamence extends Pokemon {
 		 attack2= new Attack("Power Howl  ",3,energies2,0,"This attack does 20 damage times the number of cards in your opponent's hand.");
 		 
 		 String[] energies3 = {"F","F","W","C"};
-		 attack1= new Attack("Steam Blast ",4,energies3,170,"Discard 3 Energy attached to this Pokémon.");
+		 attack3= new Attack("Steam Blast ",4,energies3,170,"Discard 3 Energy attached to this Pokémon.");
 		 
 		 
 	}

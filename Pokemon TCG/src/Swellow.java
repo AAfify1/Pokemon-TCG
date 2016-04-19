@@ -15,8 +15,10 @@ public class Swellow extends Pokemon {
 				"Electricity",
 				"Fighting");
 		setAttacks();
+		this.setLevel(1);
 		
 	}
+	/* Ancient trait: If your opponent's Pokémon is Knocked Out by damage from an attack of this Pokémon, take 1 more Prize card.*/
 	public void setAttacks()
 	{
 
@@ -24,8 +26,11 @@ public class Swellow extends Pokemon {
 		 attack1= new Attack("Peck",2,energies1,30,"");
 		 
 		 String[] energies2 = {"C","C","C"};
-		 attack1= new Attack("Wing Attack",3,energies2,50,"");
+		 attack2= new Attack("Wing Attack",3,energies2,50,"");
 		 
+	}
+	public Attack getAttack2() {
+		return attack2;
 	}
 	public Attack getAttack1(){
 		return attack1;
