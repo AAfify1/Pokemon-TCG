@@ -26,7 +26,7 @@ public class Shelgon extends Pokemon{
 	public void setAttacks()
 	{
 
-		String[] energies1 = {"F","W","C"};
+		String[] energies1 = {"Fr","W","C"};
 		 attack1= new Attack("Rolling Tackle",3,energies1,60,"");
 	}
 	

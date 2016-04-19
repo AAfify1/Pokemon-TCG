@@ -2,7 +2,7 @@
 public class Fire extends Energy {
 
 	Fire() {
-		super("F");
+		super("Fr");
 		// TODO Auto-generated constructor stub
 	}
 

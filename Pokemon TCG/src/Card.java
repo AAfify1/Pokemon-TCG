@@ -23,6 +23,10 @@ Card(String name,String cardType)
 	this.cardType = cardType;
 }
 
+public String getName() {
+	return name;
+}
+
 /**
  * Plays card                           
  * @param            

@@ -1,7 +1,7 @@
 
 public class Tester {
 	public static void main(String [] args)
-	{
+	{/*
 		Pikachu pika =new Pikachu();
 		Electricity elec = new Electricity();
 		Fearow fer = new Fearow();
@@ -20,6 +20,7 @@ public class Tester {
 		saly.getAttack1().Fight(saly, arti);
 		
 		System.out.println(shelly.getHP());
-		
+		*/
+		DeckCreator deck = new DeckCreator();
 	}
 }

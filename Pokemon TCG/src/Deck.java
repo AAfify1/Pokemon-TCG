@@ -1,18 +1,38 @@
+import java.util.Collections;
+import java.util.Stack;
+
 
 public class Deck {
-	public Deck()
-	{
-		
-	}
-	public static void main(String [] args)
-	{}
-	public void test(){
-		
-	
-	Articuno articuno = new Articuno();
 
-	
-	
-	}
-	
+    public Stack<Card> cards = new Stack();
+    
+
+    public void addCard(Card c) {
+        if (c != null) {
+            cards.push(c);
+        }
+    }
+
+    public Card[] copyToArray() {
+        return cards.toArray(new Card[cards.size()]);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
+    }
+
+    public Card pop() {
+        if (cards.empty()) {
+            return null;
+        }
+        return cards.pop();
+    }
+
+    public int size() {
+        return cards.size();
+    }
+
+    public Card removeCardAt(int index) {
+        return cards.remove(index);
+    }
 }
