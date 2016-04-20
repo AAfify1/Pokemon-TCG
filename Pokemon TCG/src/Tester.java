@@ -21,6 +21,10 @@ public class Tester {
 		
 		System.out.println(shelly.getHP());
 		*/
-		DeckCreator deck = new DeckCreator();
+		Deck1 deck = new Deck1();
+		
+		
+		System.out.println(deck.getDeck().pop().getName());
+		
 	}
 }

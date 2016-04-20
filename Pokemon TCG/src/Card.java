@@ -10,6 +10,8 @@ private String name;
  */
 private String cardType;
 
+
+
 /**
  * Card constructor.
  * @param name Card name.
@@ -25,6 +27,11 @@ Card(String name,String cardType)
 
 public String getName() {
 	return name;
+}
+
+public String getImageLoc()
+{
+	return "res/"+name.toLowerCase()+".jpg";
 }
 
 /**

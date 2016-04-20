@@ -3,8 +3,12 @@ import java.util.Stack;
 
 
 public class Deck {
-
+	Card placeholder = new Card("Empty Deck","PLaceholder");
+	
     public Stack<Card> cards = new Stack();
+
+	
+	
     
 
     public void addCard(Card c) {
@@ -23,7 +27,7 @@ public class Deck {
 
     public Card pop() {
         if (cards.empty()) {
-            return null;
+            return placeholder;
         }
         return cards.pop();
     }
