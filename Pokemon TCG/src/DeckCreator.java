@@ -15,7 +15,9 @@ public class DeckCreator extends Deck {
 		deck1.addCard(spearow1);
 		deck1.addCard(water1);
 		deck1.shuffle();
+		System.out.println(deck1.size());
 		System.out.println(deck1.pop().getName());
+		System.out.println(deck1.size());
 		
 		
 	}
