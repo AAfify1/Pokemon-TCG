@@ -23,8 +23,10 @@ public class Tester {
 		*/
 		Deck1 deck = new Deck1();
 		
-		
+		for(int i=0; i<5;i++)
+		{
 		System.out.println(deck.getDeck().pop().getName());
+		}
 		
 	}
 }
