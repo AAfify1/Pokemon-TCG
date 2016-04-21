@@ -93,12 +93,12 @@ public class GUI {
 		deck2Txt = new JTextField();
 		frmTest.getContentPane().add(deck2Txt, "cell 2 3,alignx center");
 		deck2Txt.setColumns(2);
-		deck2Txt.setText(String.valueOf(deck2.getDeck().size()));
+		deck2Txt.setText(String.valueOf(deck2.size()));
 		
 		deck1Txt = new JTextField();
 		frmTest.getContentPane().add(deck1Txt, "cell 31 10,alignx center");
 		deck1Txt.setColumns(2);
-		deck1Txt.setText(String.valueOf(deck1.getDeck().size()));
+		deck1Txt.setText(String.valueOf(deck1.size()));
 		
 		
 		
@@ -113,11 +113,12 @@ public class GUI {
 	     public void actionPerformed(ActionEvent e)
          { int i=0;
              //Execute when button is pressed
-	    	 hand1.draw(deck1.getDeck());
+	    	 hand1.draw(deck1);
 	    	 ArrayList<Card> hand11 = hand1.getHand();
 	    	 System.out.println(hand11.size());
 	    	 
-	    	 deck1Txt.setText(String.valueOf(deck1.getDeck().size()));
+	    	 
+	    	 deck1Txt.setText(String.valueOf(deck1.size()));
 	    	 i++;
          	
          }
@@ -134,9 +135,9 @@ public class GUI {
 		     public void actionPerformed(ActionEvent e)
 	         {
 	             //Execute when button is pressed
-		    	 System.out.println(deck2.getDeck().pop().getName());
+		    	 System.out.println(deck2.pop().getName());
 		    	 
-		    	 deck2Txt.setText(String.valueOf(deck2.getDeck().size()));
+		    	 deck2Txt.setText(String.valueOf(deck2.size()));
 	         	
 	         }
 	     });
