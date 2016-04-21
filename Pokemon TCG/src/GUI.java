@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import java.awt.Dimension;
@@ -36,6 +37,8 @@ import javax.swing.JPanel;
 public class GUI {
 
 	private JFrame frmTest;
+	private JTextField deck2Txt;
+	private JTextField deck1Txt;
 
 	/**
 	 * Launch the application.
@@ -66,25 +69,77 @@ public class GUI {
 	private void initialize() {
 		
 		Deck1 deck1 = new Deck1();
+		Deck2 deck2 = new Deck2();
+		Hand hand1 = new Hand();
 		
 		frmTest = new JFrame();
-		frmTest.setMinimumSize(new Dimension(1540	, 1150));
+		frmTest.setMinimumSize(new Dimension(1540	, 1200));
 		frmTest.setSize(new Dimension(700, 800));
 		 
 		  frmTest.setResizable(false);
 		frmTest.setTitle("Pokemon");
 		
-//		try {
-//    		frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/london.jpg")))));
-//    	} catch (IOException e) {
-//    		e.printStackTrace();
-//    	}
+		try {
+    		frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/bg2.jpg")))));
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
 		
 		
 		frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
-		frmTest.getContentPane().setLayout(new MigLayout("", "[][grow][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]", "[][][][][][][][][][]"));
+		frmTest.getContentPane().setLayout(new MigLayout("", "[][grow][grow][][][][][][][][][][][][][][][][][][][][][][][][][][][][][grow]", "[][][][][][][][][][][][][][]"));
 		
+		deck2Txt = new JTextField();
+		frmTest.getContentPane().add(deck2Txt, "cell 2 3,alignx center");
+		deck2Txt.setColumns(2);
+		deck2Txt.setText(String.valueOf(deck2.getDeck().size()));
+		
+		deck1Txt = new JTextField();
+		frmTest.getContentPane().add(deck1Txt, "cell 31 10,alignx center");
+		deck1Txt.setColumns(2);
+		deck1Txt.setText(String.valueOf(deck1.getDeck().size()));
+		
+		
+		
+		JButton deck1Btn = new JButton();
+		deck1Btn.setMinimumSize(new Dimension(200, 265));
+		deck1Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(deck1Btn, "cell 31 12");
+		deck1Btn.setIcon(new ImageIcon("res/card.jpg"));
+		deck1Btn.setBorder(BorderFactory.createEmptyBorder());
+		deck1Btn.setContentAreaFilled(false);
+		deck1Btn.addActionListener(new ActionListener() {
+	     public void actionPerformed(ActionEvent e)
+         { int i=0;
+             //Execute when button is pressed
+	    	 hand1.draw(deck1.getDeck());
+	    	 ArrayList<Card> hand11 = hand1.getHand();
+	    	 System.out.println(hand11.size());
+	    	 
+	    	 deck1Txt.setText(String.valueOf(deck1.getDeck().size()));
+	    	 i++;
+         	
+         }
+     });
+		
+		JButton deck2Btn = new JButton();
+		deck2Btn.setMinimumSize(new Dimension(200, 265));
+		deck2Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(deck2Btn, "cell 2 2");
+		deck2Btn.setIcon(new ImageIcon("res/card.jpg"));
+		deck2Btn.setBorder(BorderFactory.createEmptyBorder());
+		deck2Btn.setContentAreaFilled(false);
+		deck2Btn.addActionListener(new ActionListener() {
+		     public void actionPerformed(ActionEvent e)
+	         {
+	             //Execute when button is pressed
+		    	 System.out.println(deck2.getDeck().pop().getName());
+		    	 
+		    	 deck2Txt.setText(String.valueOf(deck2.getDeck().size()));
+	         	
+	         }
+	     });
 		
 		JButton dis2Btn = new JButton("Discard Pile\r\n");
 		dis2Btn.setMinimumSize(new Dimension(200, 265));
@@ -93,6 +148,13 @@ public class GUI {
 		dis2Btn.setBorder(BorderFactory.createEmptyBorder());
 		dis2Btn.setContentAreaFilled(false);
 		frmTest.getContentPane().add(dis2Btn, "cell 2 1,alignx center,aligny center");
+		
+		JButton dis1Btn = new JButton("Discard Pile");
+		dis1Btn.setMinimumSize(new Dimension(200, 265));
+		dis1Btn.setMaximumSize(new Dimension(200, 265));
+		dis1Btn.setIcon(new ImageIcon("res/discard.jpg"));
+		dis1Btn.setBorder(BorderFactory.createEmptyBorder());
+		dis1Btn.setContentAreaFilled(false);
 		
 		JButton bench21Btn = new JButton("Bench");
 		bench21Btn.setMinimumSize(new Dimension(200, 265));
@@ -119,22 +181,43 @@ public class GUI {
 		bench25Btn.setMaximumSize(new Dimension(200, 265));
 		frmTest.getContentPane().add(bench25Btn, "cell 23 1");
 		
-		JButton prz2Btn = new JButton();
-		prz2Btn.setMinimumSize(new Dimension(200, 265));
-		prz2Btn.setMaximumSize(new Dimension(200, 265));
-		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
-		frmTest.getContentPane().add(prz2Btn, "cell 31 1");
-		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
-		prz2Btn.setContentAreaFilled(false);
+		JButton bench11Btn = new JButton("Bench");
+		bench11Btn.setMinimumSize(new Dimension(200, 265));
+		bench11Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(bench11Btn, "cell 7 13");
 		
-		JButton deck2Btn = new JButton();
-		deck2Btn.setMinimumSize(new Dimension(200, 265));
-		deck2Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(deck2Btn, "cell 2 2");
-		deck2Btn.setIcon(new ImageIcon("res/card.jpg"));
-		deck2Btn.setBorder(BorderFactory.createEmptyBorder());
-		deck2Btn.setContentAreaFilled(false);
-		 	  
+		JButton bench12Btn = new JButton("Bench");
+		bench12Btn.setMinimumSize(new Dimension(200, 265));
+		bench12Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(bench12Btn, "cell 11 13");
+		
+		JButton bench13Btn = new JButton("Bench");
+		bench13Btn.setMinimumSize(new Dimension(200, 265));
+		bench13Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(bench13Btn, "cell 15 13");
+		
+		JButton bench14Btn = new JButton("Bench");
+		bench14Btn.setMinimumSize(new Dimension(200, 265));
+		bench14Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(bench14Btn, "cell 19 13");
+		
+		JButton bench15Btn = new JButton("Bench");
+		bench15Btn.setMinimumSize(new Dimension(200, 265));
+		bench15Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(bench15Btn, "cell 23 13");
+		
+		
+		
+		JButton act1Btn = new JButton("Active Pokemon");
+		act1Btn.setMinimumSize(new Dimension(200, 265));
+		act1Btn.setMaximumSize(new Dimension(200, 265));
+		frmTest.getContentPane().add(act1Btn, "cell 15 12");
+//		act1Btn.addActionListener(new ActionListener() {
+//			 
+//            public void actionPerformed(ActionEvent e)
+//            {
+//            }
+//        });		 	  
 		
 		JButton act2Btn = new JButton("Active Pokemon");
 		act2Btn.setForeground(new Color(210, 105, 30));
@@ -151,81 +234,25 @@ public class GUI {
 //        }); 
 		
 	
-		
-		
-		
-		JButton act1Btn = new JButton("Active Pokemon");
-		act1Btn.setMinimumSize(new Dimension(200, 265));
-		act1Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(act1Btn, "cell 15 8");
-//		act1Btn.addActionListener(new ActionListener() {
-//			 
-//            public void actionPerformed(ActionEvent e)
-//            {
-//            }
-//        });
-		
-		
-		JButton deck1Btn = new JButton();
-		deck1Btn.setMinimumSize(new Dimension(200, 265));
-		deck1Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(deck1Btn, "cell 31 8");
-		deck1Btn.setIcon(new ImageIcon("res/card.jpg"));
-		deck1Btn.setBorder(BorderFactory.createEmptyBorder());
-		deck1Btn.setContentAreaFilled(false);
-		deck1Btn.addActionListener(new ActionListener() {
-	     public void actionPerformed(ActionEvent e)
-         {
-             //Execute when button is pressed
-	    	 System.out.println(deck1.getDeck().pop().getName());
-         	
-         }
-     });
-		
-		
-		
-		
 		JButton prz1Btn = new JButton();
 		prz1Btn.setMinimumSize(new Dimension(200, 265));
 		prz1Btn.setMaximumSize(new Dimension(200, 265));
 		prz1Btn.setIcon(new ImageIcon("res/pcard.jpg"));
-		frmTest.getContentPane().add(prz1Btn, "cell 2 9");
+		frmTest.getContentPane().add(prz1Btn, "cell 2 13");
 		prz1Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz1Btn.setContentAreaFilled(false);
 		
-		JButton bench11Btn = new JButton("Bench");
-		bench11Btn.setMinimumSize(new Dimension(200, 265));
-		bench11Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(bench11Btn, "cell 7 9");
+		JButton prz2Btn = new JButton();
+		prz2Btn.setMinimumSize(new Dimension(200, 265));
+		prz2Btn.setMaximumSize(new Dimension(200, 265));
+		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
+		frmTest.getContentPane().add(prz2Btn, "cell 31 1");
+		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
+		prz2Btn.setContentAreaFilled(false);
+	
 		
-		JButton bench12Btn = new JButton("Bench");
-		bench12Btn.setMinimumSize(new Dimension(200, 265));
-		bench12Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(bench12Btn, "cell 11 9");
 		
-		JButton bench13Btn = new JButton("Bench");
-		bench13Btn.setMinimumSize(new Dimension(200, 265));
-		bench13Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(bench13Btn, "cell 15 9");
-		
-		JButton bench14Btn = new JButton("Bench");
-		bench14Btn.setMinimumSize(new Dimension(200, 265));
-		bench14Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(bench14Btn, "cell 19 9");
-		
-		JButton bench15Btn = new JButton("Bench");
-		bench15Btn.setMinimumSize(new Dimension(200, 265));
-		bench15Btn.setMaximumSize(new Dimension(200, 265));
-		frmTest.getContentPane().add(bench15Btn, "cell 23 9");
-		
-		JButton dis1Btn = new JButton("Discard Pile");
-		dis1Btn.setMinimumSize(new Dimension(200, 265));
-		dis1Btn.setMaximumSize(new Dimension(200, 265));
-		dis1Btn.setIcon(new ImageIcon("res/discard.jpg"));
-		dis1Btn.setBorder(BorderFactory.createEmptyBorder());
-		dis1Btn.setContentAreaFilled(false);
-		
-		frmTest.getContentPane().add(dis1Btn, "cell 31 9");
+		frmTest.getContentPane().add(dis1Btn, "cell 31 13");
 		frmTest.setBounds(100, 100, 300, 300);
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
