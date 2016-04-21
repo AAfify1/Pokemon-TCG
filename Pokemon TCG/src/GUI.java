@@ -8,6 +8,7 @@ import javax.swing.JRadioButton;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
@@ -16,6 +17,7 @@ import java.awt.Rectangle;
 import net.miginfocom.swing.MigLayout;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -29,6 +31,7 @@ import java.awt.Choice;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.JTextField;
+import javax.swing.JPanel;
 
 public class GUI {
 
@@ -65,10 +68,17 @@ public class GUI {
 		Deck1 deck1 = new Deck1();
 		
 		frmTest = new JFrame();
-		frmTest.setMinimumSize(new Dimension(1500, 980));
+		frmTest.setMinimumSize(new Dimension(1540	, 1150));
 		frmTest.setSize(new Dimension(700, 800));
-		frmTest.setSize(600,700);
+		 
+		  frmTest.setResizable(false);
 		frmTest.setTitle("Pokemon");
+		
+//		try {
+//    		frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/london.jpg")))));
+//    	} catch (IOException e) {
+//    		e.printStackTrace();
+//    	}
 		
 		
 		frmTest.setForeground(new Color(135, 206, 250));
@@ -77,12 +87,11 @@ public class GUI {
 		
 		
 		JButton dis2Btn = new JButton("Discard Pile\r\n");
-		dis2Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		dis2Btn.setMinimumSize(new Dimension(200, 265));
 		dis2Btn.setMaximumSize(new Dimension(200, 265));
+		dis2Btn.setIcon(new ImageIcon("res/discard.jpg"));
+		dis2Btn.setBorder(BorderFactory.createEmptyBorder());
+		dis2Btn.setContentAreaFilled(false);
 		frmTest.getContentPane().add(dis2Btn, "cell 2 1,alignx center,aligny center");
 		
 		JButton bench21Btn = new JButton("Bench");
@@ -110,16 +119,21 @@ public class GUI {
 		bench25Btn.setMaximumSize(new Dimension(200, 265));
 		frmTest.getContentPane().add(bench25Btn, "cell 23 1");
 		
-		JButton prz2Btn = new JButton("Prize");
+		JButton prz2Btn = new JButton();
 		prz2Btn.setMinimumSize(new Dimension(200, 265));
 		prz2Btn.setMaximumSize(new Dimension(200, 265));
+		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
 		frmTest.getContentPane().add(prz2Btn, "cell 31 1");
+		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
+		prz2Btn.setContentAreaFilled(false);
 		
-		JButton deck2Btn = new JButton("Deck");
+		JButton deck2Btn = new JButton();
 		deck2Btn.setMinimumSize(new Dimension(200, 265));
 		deck2Btn.setMaximumSize(new Dimension(200, 265));
 		frmTest.getContentPane().add(deck2Btn, "cell 2 2");
 		deck2Btn.setIcon(new ImageIcon("res/card.jpg"));
+		deck2Btn.setBorder(BorderFactory.createEmptyBorder());
+		deck2Btn.setContentAreaFilled(false);
 		 	  
 		
 		JButton act2Btn = new JButton("Active Pokemon");
@@ -152,11 +166,13 @@ public class GUI {
 //        });
 		
 		
-		JButton deck1Btn = new JButton("Deck");
+		JButton deck1Btn = new JButton();
 		deck1Btn.setMinimumSize(new Dimension(200, 265));
 		deck1Btn.setMaximumSize(new Dimension(200, 265));
 		frmTest.getContentPane().add(deck1Btn, "cell 31 8");
 		deck1Btn.setIcon(new ImageIcon("res/card.jpg"));
+		deck1Btn.setBorder(BorderFactory.createEmptyBorder());
+		deck1Btn.setContentAreaFilled(false);
 		deck1Btn.addActionListener(new ActionListener() {
 	     public void actionPerformed(ActionEvent e)
          {
@@ -169,10 +185,13 @@ public class GUI {
 		
 		
 		
-		JButton prz1Btn = new JButton("Prize");
+		JButton prz1Btn = new JButton();
 		prz1Btn.setMinimumSize(new Dimension(200, 265));
 		prz1Btn.setMaximumSize(new Dimension(200, 265));
+		prz1Btn.setIcon(new ImageIcon("res/pcard.jpg"));
 		frmTest.getContentPane().add(prz1Btn, "cell 2 9");
+		prz1Btn.setBorder(BorderFactory.createEmptyBorder());
+		prz1Btn.setContentAreaFilled(false);
 		
 		JButton bench11Btn = new JButton("Bench");
 		bench11Btn.setMinimumSize(new Dimension(200, 265));
@@ -202,6 +221,10 @@ public class GUI {
 		JButton dis1Btn = new JButton("Discard Pile");
 		dis1Btn.setMinimumSize(new Dimension(200, 265));
 		dis1Btn.setMaximumSize(new Dimension(200, 265));
+		dis1Btn.setIcon(new ImageIcon("res/discard.jpg"));
+		dis1Btn.setBorder(BorderFactory.createEmptyBorder());
+		dis1Btn.setContentAreaFilled(false);
+		
 		frmTest.getContentPane().add(dis1Btn, "cell 31 9");
 		frmTest.setBounds(100, 100, 300, 300);
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

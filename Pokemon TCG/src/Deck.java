@@ -3,7 +3,7 @@ import java.util.Stack;
 
 
 public class Deck {
-	Card placeholder = new Card("Empty Deck","PLaceholder");
+	Card placeholder = new Card("Empty Deck","Placeholder");
 	
     public Stack<Card> cards = new Stack();
 

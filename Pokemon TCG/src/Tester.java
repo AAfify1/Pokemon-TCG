@@ -21,12 +21,7 @@ public class Tester {
 		
 		System.out.println(shelly.getHP());
 		*/
-		Deck1 deck = new Deck1();
-		
-		for(int i=0; i<5;i++)
-		{
-		System.out.println(deck.getDeck().pop().getName());
-		}
-		
+		GUI gui = new GUI();
+		GUI.main(null);
 	}
 }
