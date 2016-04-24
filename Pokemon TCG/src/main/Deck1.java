@@ -23,6 +23,27 @@ public class Deck1 extends Deck {
 		this.addCard(elec1);
 		this.addCard(spearow1);
 		this.addCard(water1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(water1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
 		this.shuffle();
 	}
 	public Deck getDeck() {
