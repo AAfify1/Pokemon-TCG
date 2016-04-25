@@ -24,6 +24,31 @@ public class Deck2 extends Deck {
 		Dunsparce dunsparce1 = new Dunsparce();
 		Fearow fearow1 = new Fearow();
 		
+		
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(dunsparce1);
+		this.addCard(fearow1);
+		this.addCard(bagon1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(dunsparce1);
+		this.addCard(fearow1);
+		this.addCard(bagon1);
+		this.addCard(pika1);
+		this.addCard(articuno1);
+		this.addCard(elec1);
+		this.addCard(spearow1);
+		this.addCard(water1);
+		this.addCard(dunsparce1);
+		this.addCard(fearow1);
+		this.addCard(bagon1);
 		this.addCard(pika1);
 		this.addCard(articuno1);
 		this.addCard(elec1);

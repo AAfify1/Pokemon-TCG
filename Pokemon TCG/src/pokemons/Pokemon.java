@@ -30,7 +30,7 @@ public class Pokemon extends Card {
 	public void setDead(Boolean dead) {
 		this.dead = dead;
 	}
-	Pokemon(String name,			
+	public Pokemon(String name,			
 			String type,
 			Boolean isEX,
 			int HP,
@@ -51,7 +51,7 @@ public class Pokemon extends Card {
 		this.weakness = weakness;
 		
 	}
-	Pokemon(String name,			
+	public Pokemon(String name,			
 			String type,
 			Boolean isEX,
 			int HP,
@@ -73,6 +73,12 @@ public class Pokemon extends Card {
 		this.weakness = weakness;
 		this.hasAbility= hasAbility;
 		
+	}
+	
+	public Pokemon(String name)
+	{
+		super(name,"Pokemon");
+		this.name=name;
 	}
 	public Boolean getHasAbility() {
 		return hasAbility;

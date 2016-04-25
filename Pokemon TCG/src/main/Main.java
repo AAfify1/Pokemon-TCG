@@ -8,5 +8,6 @@ public class Main {
 	{
 		GUI gui = new GUI();
 		GUI.main(null);
+		
 	}
 }

@@ -1,9 +1,17 @@
 package main;
 import java.util.ArrayList;
 
+import gui.HandCard;
+
 public class Hand {
 	
-	ArrayList<Card> hand = new ArrayList<Card>();
+	ArrayList<HandCard> hand = new ArrayList<HandCard>();
+	private Player player;
+	
+	public Hand(Player player)
+	{
+		this.player = player;
+	}
 	
 	public void draw(Deck deck,int N)
 	{
@@ -12,7 +20,8 @@ public class Hand {
 		Card drawn = deck.pop();
 		if(!drawn.getName().equals("Empty"))
 		{
-		hand.add(drawn);
+			HandCard handC = new HandCard(player, drawn);
+		hand.add(handC);
 		}
 		}
 	}
@@ -22,16 +31,29 @@ public class Hand {
 		Card drawn = deck.pop();
 		if(!drawn.getName().equals("Empty"))
 		{
-		hand.add(drawn);
+		hand.add(new HandCard(player, drawn));
 		}
 		
+	}
+	
+	public void remove (Card card)
+	{
+		hand.remove(card);
+	}
+	public Card getCard(int i)
+	{
+		return hand.get(i).getCard();
+	}
+	public HandCard get(int i)
+	{
+		return hand.get(i);
 	}
 	public int getSize()
 	{
 		return hand.size();
 	}
 
-	public ArrayList<Card> getHand() {
+	public ArrayList<HandCard> getHand() {
 		return hand;
 	}
 
