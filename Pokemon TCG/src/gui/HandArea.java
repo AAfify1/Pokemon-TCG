@@ -10,23 +10,26 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import main.Card;
+import main.Player;
 
-public class HandSection extends JScrollPane {
+public class HandArea extends JScrollPane {
 	private ArrayList<HandCard> handCards;
 
 	private JPanel cardPanel;
+	private Player player;
 
 	public ArrayList<HandCard> getHandCards() {
 		return handCards;
 	}
 
-	public HandSection() {
+	public HandArea(Player player) {
 		super();
+		this.player = player;
 		handCards = new ArrayList<HandCard>();
 
 		cardPanel = new JPanel();
 		cardPanel.setLayout(new FlowLayout());
-		cardPanel.setOpaque(false);
+		cardPanel.setOpaque(true);
 		cardPanel.setSize(new Dimension(670, 111));
 
 		setViewportView(cardPanel);
@@ -39,7 +42,7 @@ public class HandSection extends JScrollPane {
 	}
 
 	public void addCard(Card c) {
-		HandCard card = new HandCard(c);
+		HandCard card = new HandCard(player,c);
 
 		handCards.add(card);
 		cardPanel.add(card);
