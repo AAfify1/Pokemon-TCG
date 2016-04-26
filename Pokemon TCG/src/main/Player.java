@@ -7,7 +7,7 @@ public class Player {
 	public Deck deck;
 	public Hand hand;
 	public PrizeCards prize;
-	public Boolean win;
+	private Boolean win;
 	public String name;
 	public Pokemon active = new Pokemon("card"); 
 	
@@ -28,26 +28,6 @@ public class Player {
 
 	public void setWin(Boolean win) {
 		this.win = win;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Deck getDeck() {
-		return deck;
-	}
-
-	public Hand getHand() {
-		return hand;
-	}
-
-	public PrizeCards getPrize() {
-		return prize;
 	}
 
 	public void setActive(Card card) 

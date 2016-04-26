@@ -24,13 +24,13 @@ public class HandCard extends JButton{
 		setPreferredSize(new Dimension(100, 140));
 		String path = "res/" + card.getName().toLowerCase() + ".jpg";
 		setIcon(new ImageIcon(path));
-		this.addActionListener(new ActionListener() { 
-			  public void actionPerformed(ActionEvent e) { 
-				  System.out.println(card.getName());
-				  player.setActive(card);
-				  
-			  } 
-			} );
+//		this.addActionListener(new ActionListener() { 
+//			  public void actionPerformed(ActionEvent e) { 
+//				  System.out.println(card.getName());
+//				  player.setActive(card);
+//				  
+//			  } 
+//			} );
 	}
 	public Card getCard()
 	{

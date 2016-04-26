@@ -55,6 +55,7 @@ public class GUI {
 	private JTextField deck1Txt;
 	private JTextField prize2Txt;
 	private JTextField prize1Txt;
+	private HandArea area1;
 
 	/**
 	 * Launch the application.
@@ -88,6 +89,7 @@ public class GUI {
 		frmTest.setMinimumSize(new Dimension(1920, 1080));
 		frmTest.setSize(new Dimension(700, 800));
 		frmTest.setTitle("Pokemon");
+		frmTest.setResizable(true);
 
 		 try {
 		 frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new
@@ -100,10 +102,12 @@ public class GUI {
 		frmTest.getContentPane().setBackground(Color.WHITE);
 		Player player1 = new Player(new Deck1(), new PrizeCards(), "player1");
 		Player player2 = new Player(new Deck1(), new PrizeCards(), "player2");
+		
 
 		HandArea area2 = new HandArea(player2);
-		area2.setBounds(680, 30, 560, 140);
+		area2.setBounds(680, 30, 560, 160);
 		frmTest.add(area2);
+		area2.addNCards(player2.hand.getHand());
 
 		JButton prz2Btn = new JButton();
 		prz2Btn.setBounds(1300, 30, 100, 140);
@@ -176,13 +180,14 @@ public class GUI {
 		deck1Txt.setBounds(1300, 540, 22, 20);
 		deck1Txt.setColumns(2);
 
-		HandArea area1 = new HandArea(player1);
+		area1 = new HandArea(player1);
 
-		area1.setBounds(680, 910, 560, 140);
+		area1.setBounds(680, 890, 560, 160);
 		frmTest.add(area1);
+		area1.addNCards(player1.hand.getHand());
 
 		JButton prz1Btn = new JButton();
-		prz1Btn.setBounds(550, 910, 100, 140);
+		prz1Btn.setBounds(550, 900, 100, 140);
 
 		prz1Btn.setMinimumSize(new Dimension(150, 200));
 		prz1Btn.setMaximumSize(new Dimension(150, 200));
@@ -191,7 +196,7 @@ public class GUI {
 		prz1Btn.setContentAreaFilled(false);
 
 		prize1Txt = new JTextField();
-		prize1Txt.setBounds(590, 880, 22, 20);
+		prize1Txt.setBounds(590, 870, 22, 20);
 
 		prize1Txt.setColumns(2);
 
@@ -219,5 +224,13 @@ public class GUI {
 
 		frmTest.setBounds(100, 100, 300, 300);
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public HandArea getArea1() {
+		return area1;
+	}
+
+	public void setArea1(HandArea area1) {
+		this.area1 = area1;
 	}
 }
