@@ -9,31 +9,30 @@ import gui.GUI;
 
 public class HandListener implements ActionListener, MouseListener {
 	
-	private GUI gui;
-	public HandListener(GUI gui){
+	
+	public HandListener(){
 		
-		this.gui = gui;
-		gui.getArea1().setHandListener(this);
+	
 		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-
+		System.out.println("TooEst");	
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("e");	
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("l");	
 	}
 
 	@Override

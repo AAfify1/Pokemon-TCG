@@ -35,7 +35,9 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import listeners.HandListener;
 import main.Card;
+import main.Deck;
 import main.Deck1;
 import main.Deck2;
 import main.Hand;
@@ -56,6 +58,8 @@ public class GUI {
 	private JTextField prize2Txt;
 	private JTextField prize1Txt;
 	private HandArea area1;
+	private Player player1;
+	private Player player2;
 
 	/**
 	 * Launch the application.
@@ -77,6 +81,12 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
+		
+		initialize();
+	}
+	public GUI(Player player1,Player player2) {
+		this.player1 = player1;
+		this.player2 = player2;
 		initialize();
 	}
 
@@ -97,11 +107,13 @@ public class GUI {
 		 } catch (IOException e) {
 		 e.printStackTrace();
 		 }
+		 
+		 player1 = new Player(new Deck(), new PrizeCards(),"player1");
+		 player2 = new Player(new Deck(), new PrizeCards(),"player2");
 
 		frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
-		Player player1 = new Player(new Deck1(), new PrizeCards(), "player1");
-		Player player2 = new Player(new Deck1(), new PrizeCards(), "player2");
+		
 		
 
 		HandArea area2 = new HandArea(player2);
@@ -116,6 +128,8 @@ public class GUI {
 		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
 		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz2Btn.setContentAreaFilled(false);
+		prz2Btn.addActionListener(new HandListener());
+		prz2Btn.addMouseListener(new HandListener());
 
 		prize2Txt = new JTextField();
 		prize2Txt.setBounds(1340, 180, 22, 20);
