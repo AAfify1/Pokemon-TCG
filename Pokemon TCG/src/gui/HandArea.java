@@ -25,9 +25,14 @@ public class HandArea extends JScrollPane {
 		return handCards;
 	}
 	
+	public HandListener getHandListener() {
+		return handListener;
+	}
+
 	public void setHandListener(HandListener handListener) {
 		this.handListener = handListener;
 	}
+
 
 	public HandArea(Player player) {
 		super();
@@ -41,7 +46,7 @@ public class HandArea extends JScrollPane {
 
 		setViewportView(cardPanel);
 		getViewport().setOpaque(false);
-		setOpaque(false);
+		setOpaque(true);
 		setBorder(BorderFactory.createEmptyBorder());
 		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);

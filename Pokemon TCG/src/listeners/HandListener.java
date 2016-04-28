@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
+
 import gui.GUI;
 
 public class HandListener implements ActionListener, MouseListener {
 	
-	
-	public HandListener(){
+	private GUI gui;
+	public HandListener(GUI gui){
+		this.gui = gui;
 		
 	
 		
@@ -19,20 +22,24 @@ public class HandListener implements ActionListener, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		System.out.println("TooEst");	
+	
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+			gui.getCardOverview()
+					.setImageIcon((JButton) e.getSource());
 		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("e");	
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("l");	
+		gui.getCardOverview()
+		.resetImageIcon();
 	}
 
 	@Override

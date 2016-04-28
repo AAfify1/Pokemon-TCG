@@ -13,18 +13,18 @@ public class CardOverview extends JLabel {
 	}
 
 	public CardOverview() {
-		super(new ImageIcon("res/london.jpg"));
+		super(new ImageIcon("res/cardback.jpg"));
 		setSize(new Dimension(300, 410));
 	}
 
 	public void setImageIcon(JButton b) {
-		String path = "Cards/" + b.getName() + " large.jpg";
+		String path = "res/" + b.getName().toLowerCase() + " large.jpg";
 		setIcon(new ImageIcon(path));
 		updateUI();
 	}
 
 	public void resetImageIcon() {
-		setIcon(new ImageIcon("Cards/cardback large.jpg"));
+		setIcon(new ImageIcon("res/cardback.jpg"));
 		updateUI();
 	}
 }

@@ -60,6 +60,7 @@ public class GUI {
 	private HandArea area1;
 	private Player player1;
 	private Player player2;
+	private CardOverview card;
 
 	/**
 	 * Launch the application.
@@ -108,8 +109,8 @@ public class GUI {
 		 e.printStackTrace();
 		 }
 		 
-		 player1 = new Player(new Deck(), new PrizeCards(),"player1");
-		 player2 = new Player(new Deck(), new PrizeCards(),"player2");
+		 player1 = new Player(new Deck1(), new PrizeCards(),"player1");
+		 player2 = new Player(new Deck2(), new PrizeCards(),"player2");
 
 		frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
@@ -119,7 +120,9 @@ public class GUI {
 		HandArea area2 = new HandArea(player2);
 		area2.setBounds(680, 30, 560, 160);
 		frmTest.add(area2);
+		area2.setHandListener(new HandListener(this));
 		area2.addNCards(player2.hand.getHand());
+		
 
 		JButton prz2Btn = new JButton();
 		prz2Btn.setBounds(1300, 30, 100, 140);
@@ -128,8 +131,7 @@ public class GUI {
 		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
 		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz2Btn.setContentAreaFilled(false);
-		prz2Btn.addActionListener(new HandListener());
-		prz2Btn.addMouseListener(new HandListener());
+		
 
 		prize2Txt = new JTextField();
 		prize2Txt.setBounds(1340, 180, 22, 20);
@@ -195,6 +197,7 @@ public class GUI {
 		deck1Txt.setColumns(2);
 
 		area1 = new HandArea(player1);
+		area1.setHandListener(new HandListener(this));
 
 		area1.setBounds(680, 890, 560, 160);
 		frmTest.add(area1);
@@ -214,13 +217,13 @@ public class GUI {
 
 		prize1Txt.setColumns(2);
 
-		JLabel lblImage = new JLabel("");
-		lblImage.setBounds(233, 390, 214, 300);
-		lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
+		card = new CardOverview();
+		card.setLocation(233, 390);
+		//lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
 
 		frmTest.getContentPane().setLayout(null);
 
-		frmTest.getContentPane().add(lblImage);
+		frmTest.getContentPane().add(card);
 		frmTest.getContentPane().add(dis2Btn);
 
 		frmTest.getContentPane().add(prz2Btn);
@@ -238,6 +241,10 @@ public class GUI {
 
 		frmTest.setBounds(100, 100, 300, 300);
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public CardOverview getCardOverview() {
+		return card;
 	}
 
 	public HandArea getArea1() {
