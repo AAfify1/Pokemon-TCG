@@ -8,25 +8,29 @@ import javax.swing.JButton;
 import main.Card;
 import main.Player;
 
-public class Bench extends JButton {
+public class BenchCard extends JButton {
 	
 	
 		private Card card;
 		private Player player;
 		
-		public Bench(Player player,Card card)
+		public BenchCard(Player player)
 		{
 			super();
+			
+		}
+		public Card getCard()
+		{
+			return card;
+		}
+		public void setCard(Card card )
+		{
 			this.card = card;
 			setName(card.getName());
 			setPreferredSize(new Dimension(100, 140));
 			String path = "res/" + card.getName().toLowerCase() + ".jpg";
 			setIcon(new ImageIcon(path));
 
-		}
-		public Card getCard()
-		{
-			return card;
 		}
 	}
 	

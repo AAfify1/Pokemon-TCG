@@ -8,12 +8,15 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 
 import gui.GUI;
+import gui.HandCard;
+import main.Card;
+import main.GameManager;
 
 public class HandListener implements ActionListener, MouseListener {
 	
-	private GUI gui;
-	public HandListener(GUI gui){
-		this.gui = gui;
+	private GameManager game;
+	public HandListener(GameManager game){
+		this.game = game;
 		
 	
 		
@@ -21,7 +24,9 @@ public class HandListener implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		HandCard card = (HandCard)e.getSource();
+		Card cardd = card.getCard();
+		game.getGui().getBench1().addCard(cardd);
 	
 	}
 
@@ -30,7 +35,7 @@ public class HandListener implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 		
 		
-			gui.getCardOverview()
+			game.getGui().getCardOverview()
 					.setImageIcon((JButton) e.getSource());
 		
 	}
@@ -38,7 +43,7 @@ public class HandListener implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		gui.getCardOverview()
+		game.getGui().getCardOverview()
 		.resetImageIcon();
 	}
 

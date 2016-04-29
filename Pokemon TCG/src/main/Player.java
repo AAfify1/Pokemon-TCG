@@ -9,6 +9,7 @@ public class Player {
 	public PrizeCards prize;
 	private Boolean win;
 	public String name;
+	private Boolean isActive =false;
 	public Pokemon active = new Pokemon("card"); 
 	
 	
@@ -21,6 +22,20 @@ public class Player {
 		prize.fill(deck);
 		hand.draw(deck, 7);
 	}
+	
+	
+
+	public Boolean getActive() {
+		return isActive;
+	}
+
+
+
+	public void setActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+
 
 	public Boolean getWin() {
 		return win;

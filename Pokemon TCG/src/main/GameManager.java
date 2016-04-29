@@ -1,0 +1,62 @@
+package main;
+
+import java.awt.EventQueue;
+
+import gui.GUI;
+import listeners.HandListener;
+
+public class GameManager {
+
+	private Player player1 = new Player(new Deck1(), new PrizeCards(), "player1");
+	private Player player2 = new Player(new Deck2(), new PrizeCards(), "player2");
+	private int turn = 0;
+	private GUI gui;
+	private HandListener handListener = new HandListener(this);
+
+	public HandListener getHandListener() {
+		return handListener;
+	}
+
+	public void setHandListener(HandListener handListener) {
+		this.handListener = handListener;
+	}
+
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public Player getPlayer2() {
+		return player2;
+	}
+
+	public GameManager() {
+		this.gui = new GUI(player1, player2, handListener,this);
+		startGame();
+	}
+
+	public GUI getGui() {
+		return gui;
+	}
+
+	public void startGame() {
+		player1.setActive(true);
+		player2.setActive(false);
+
+	}
+
+	public void endTurn() {
+		if (player1.getActive()) {
+			player1.setActive(false);
+			player2.setActive(true);
+			turn++;
+		} else if (player2.getActive()) {
+			player1.setActive(true);
+			player2.setActive(false);
+			turn++;
+		}
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+}

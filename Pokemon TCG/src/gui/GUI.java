@@ -40,6 +40,7 @@ import main.Card;
 import main.Deck;
 import main.Deck1;
 import main.Deck2;
+import main.GameManager;
 import main.Hand;
 import main.Player;
 import main.PrizeCards;
@@ -61,22 +62,26 @@ public class GUI {
 	private Player player1;
 	private Player player2;
 	private CardOverview card;
+	private HandListener handListener;
+	private BenchArea2 bench2;
+	private BenchArea2 bench1;
+	private GameManager game;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI window = new GUI();
-					window.frmTest.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					GUI window = new GUI();
+//					window.frmTest.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
@@ -85,9 +90,11 @@ public class GUI {
 		
 		initialize();
 	}
-	public GUI(Player player1,Player player2) {
+	public GUI(Player player1,Player player2,HandListener handListener,GameManager game) {
 		this.player1 = player1;
 		this.player2 = player2;
+		this.handListener = handListener;
+		this.game =game;
 		initialize();
 	}
 
@@ -104,13 +111,12 @@ public class GUI {
 
 		 try {
 		 frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new
-		 File("res/bg3.jpg")))));
+		 File("res/bg2.jpg")))));
 		 } catch (IOException e) {
 		 e.printStackTrace();
 		 }
 		 
-		 player1 = new Player(new Deck1(), new PrizeCards(),"player1");
-		 player2 = new Player(new Deck2(), new PrizeCards(),"player2");
+		
 
 		frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
@@ -120,7 +126,7 @@ public class GUI {
 		HandArea area2 = new HandArea(player2);
 		area2.setBounds(680, 30, 560, 160);
 		frmTest.add(area2);
-		area2.setHandListener(new HandListener(this));
+		area2.setHandListener(handListener);
 		area2.addNCards(player2.hand.getHand());
 		
 
@@ -132,12 +138,23 @@ public class GUI {
 		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz2Btn.setContentAreaFilled(false);
 		
+		JButton endTurn = new JButton("END TURN");
+		endTurn.setBounds(910,520,100,30);
+		frmTest.add(endTurn);
+		endTurn.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+		   game.endTurn();
+		  }
+		});
+		
 
 		prize2Txt = new JTextField();
 		prize2Txt.setBounds(1340, 180, 22, 20);
 		prize2Txt.setColumns(2);
 
-		BenchArea bench2 = new BenchArea();
+		bench2 = new BenchArea2(player2);
 		frmTest.add(bench2);
 		bench2.setBounds(680, 200, 550, 156);
 
@@ -172,9 +189,9 @@ public class GUI {
 		act1Btn.setMinimumSize(new Dimension(150, 200));
 		act1Btn.setMaximumSize(new Dimension(150, 200));
 
-		BenchArea bench = new BenchArea();
-		frmTest.add(bench);
-		bench.setBounds(680, 740, 550, 156);
+		bench1 = new BenchArea2(player1);
+		frmTest.add(bench1);
+		bench1.setBounds(680, 730, 550, 156);
 
 		JButton dis1Btn = new JButton("Discard Pile");
 		dis1Btn.setBounds(1260, 740, 100, 140);
@@ -197,7 +214,7 @@ public class GUI {
 		deck1Txt.setColumns(2);
 
 		area1 = new HandArea(player1);
-		area1.setHandListener(new HandListener(this));
+		area1.setHandListener(handListener);
 
 		area1.setBounds(680, 890, 560, 160);
 		frmTest.add(area1);
@@ -240,9 +257,22 @@ public class GUI {
 		frmTest.getContentPane().add(dis1Btn);
 
 		frmTest.setBounds(100, 100, 300, 300);
+		frmTest.setVisible(true);
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	public BenchArea2 getBench2() {
+		return bench2;
+	}
+	public void setBench2(BenchArea2 bench2) {
+		this.bench2 = bench2;
+	}
+	public BenchArea2 getBench1() {
+		return bench1;
+	}
+	public void setBench1(BenchArea2 bench1) {
+		this.bench1 = bench1;
+	}
 	public CardOverview getCardOverview() {
 		return card;
 	}
