@@ -27,6 +27,8 @@ public class HandListener implements ActionListener, MouseListener {
 		HandCard card = (HandCard)e.getSource();
 		Card cardd = card.getCard();
 		game.getGui().getBench1().addCard(cardd);
+		game.getPlayer1().hand.remove(cardd);
+		game.getGui().getArea1().removeCard(card);
 	
 	}
 

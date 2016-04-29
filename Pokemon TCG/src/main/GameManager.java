@@ -2,6 +2,8 @@ package main;
 
 import java.awt.EventQueue;
 
+import javax.swing.JTextField;
+
 import gui.GUI;
 import listeners.HandListener;
 
@@ -31,6 +33,11 @@ public class GameManager {
 
 	public GameManager() {
 		this.gui = new GUI(player1, player2, handListener,this);
+		gui.setDeck1Txt(new JTextField(String.valueOf(player1.deck.size())));
+		gui.setDeck2Txt(new JTextField(String.valueOf(player2.deck.size())));
+		gui.setPrize1Txt(new JTextField(String.valueOf(player1.prize.size())));
+		gui.setPrize2Txt(new JTextField(String.valueOf(player2.prize.size())));
+		
 		startGame();
 	}
 

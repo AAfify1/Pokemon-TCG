@@ -35,6 +35,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import listeners.BenchListener;
 import listeners.HandListener;
 import main.Card;
 import main.Deck;
@@ -63,9 +64,11 @@ public class GUI {
 	private Player player2;
 	private CardOverview card;
 	private HandListener handListener;
+	private BenchListener benchListener;
 	private BenchArea2 bench2;
 	private BenchArea2 bench1;
 	private GameManager game;
+	
 
 	/**
 	 * Launch the application.
@@ -83,6 +86,30 @@ public class GUI {
 //		});
 //	}
 
+	public JTextField getDeck2Txt() {
+		return deck2Txt;
+	}
+	public void setDeck2Txt(JTextField deck2Txt) {
+		this.deck2Txt = deck2Txt;
+	}
+	public JTextField getDeck1Txt() {
+		return deck1Txt;
+	}
+	public void setDeck1Txt(JTextField deck1Txt) {
+		this.deck1Txt = deck1Txt;
+	}
+	public JTextField getPrize2Txt() {
+		return prize2Txt;
+	}
+	public void setPrize2Txt(JTextField prize2Txt) {
+		this.prize2Txt = prize2Txt;
+	}
+	public JTextField getPrize1Txt() {
+		return prize1Txt;
+	}
+	public void setPrize1Txt(JTextField prize1Txt) {
+		this.prize1Txt = prize1Txt;
+	}
 	/**
 	 * Create the application.
 	 */
@@ -94,6 +121,7 @@ public class GUI {
 		this.player1 = player1;
 		this.player2 = player2;
 		this.handListener = handListener;
+		this.benchListener = new BenchListener(game);
 		this.game =game;
 		initialize();
 	}
@@ -101,7 +129,7 @@ public class GUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 
 		frmTest = new JFrame();
 		frmTest.setMinimumSize(new Dimension(1920, 1080));
@@ -150,13 +178,14 @@ public class GUI {
 		});
 		
 
-		prize2Txt = new JTextField();
+		prize2Txt = new JTextField((String.valueOf(player2.prize.size())));
 		prize2Txt.setBounds(1340, 180, 22, 20);
 		prize2Txt.setColumns(2);
 
 		bench2 = new BenchArea2(player2);
 		frmTest.add(bench2);
 		bench2.setBounds(680, 200, 550, 156);
+		bench2.setBenchListener(benchListener);
 
 		JButton deck2Btn = new JButton();
 		deck2Btn.setBounds(550, 370, 100, 140);
@@ -166,7 +195,7 @@ public class GUI {
 		deck2Btn.setBorder(BorderFactory.createEmptyBorder());
 		deck2Btn.setContentAreaFilled(false);
 
-		deck2Txt = new JTextField();
+		deck2Txt = new JTextField((String.valueOf(player2.deck.size())));
 		deck2Txt.setBounds(590, 520, 22, 20);
 		deck2Txt.setColumns(2);
 
@@ -192,6 +221,7 @@ public class GUI {
 		bench1 = new BenchArea2(player1);
 		frmTest.add(bench1);
 		bench1.setBounds(680, 730, 550, 156);
+		bench1.setBenchListener(benchListener);
 
 		JButton dis1Btn = new JButton("Discard Pile");
 		dis1Btn.setBounds(1260, 740, 100, 140);
@@ -209,7 +239,7 @@ public class GUI {
 		deck1Btn.setBorder(BorderFactory.createEmptyBorder());
 		deck1Btn.setContentAreaFilled(false);
 
-		deck1Txt = new JTextField();
+		deck1Txt = new JTextField((String.valueOf(player1.deck.size())));
 		deck1Txt.setBounds(1300, 540, 22, 20);
 		deck1Txt.setColumns(2);
 
@@ -229,7 +259,7 @@ public class GUI {
 		prz1Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz1Btn.setContentAreaFilled(false);
 
-		prize1Txt = new JTextField();
+		prize1Txt = new JTextField((String.valueOf(player1.prize.size())));
 		prize1Txt.setBounds(590, 870, 22, 20);
 
 		prize1Txt.setColumns(2);
