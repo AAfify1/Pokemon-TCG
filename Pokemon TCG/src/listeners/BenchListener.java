@@ -5,8 +5,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
+
+import main.GameManager;
+
 public class BenchListener implements ActionListener, MouseListener {
 
+	
+	private GameManager game;
+	public BenchListener(GameManager game){
+		this.game = game;
+		
+	
+		
+	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -14,15 +26,18 @@ public class BenchListener implements ActionListener, MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
+		game.getGui().getCardOverview()
+				.setImageIcon((JButton) e.getSource());
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		game.getGui().getCardOverview()
+		.resetImageIcon();
 	}
 
 	@Override
