@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JTextField;
 
 import gui.GUI;
+import listeners.ActiveListener;
 import listeners.HandListener;
 
 public class GameManager {
@@ -14,6 +15,9 @@ public class GameManager {
 	private int turn = 0;
 	private GUI gui;
 	private HandListener handListener = new HandListener(this);
+	
+
+	
 
 	public HandListener getHandListener() {
 		return handListener;
@@ -47,13 +51,23 @@ public class GameManager {
 
 	public void startGame() {
 		player1.setActive(true);
-		player2.setActive(false);
+		player2.setActive(true);
 		
 		
 
 	}
 
 	public void endTurn() {
+		
+		if(turn==0)
+		{
+			player1.setActive(true);
+			player2.setActive(false);
+			turn++; 
+		}
+		
+		else{
+		
 		if (player1.getActive()) {
 			player1.setActive(false);
 			player2.setActive(true);
@@ -62,6 +76,7 @@ public class GameManager {
 			player1.setActive(true);
 			player2.setActive(false);
 			turn++;
+		}
 		}
 	}
 

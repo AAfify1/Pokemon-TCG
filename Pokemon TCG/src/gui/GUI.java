@@ -35,6 +35,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
+import listeners.ActiveListener;
 import listeners.BenchListener;
 import listeners.HandListener;
 import main.Card;
@@ -65,10 +66,13 @@ public class GUI {
 	private Player player2;
 	private CardOverview card;
 	private HandListener handListener;
+	private ActiveListener activeListener;
 	private BenchListener benchListener;
 	private BenchArea bench2;
 	private BenchArea bench1;
 	private GameManager game;
+	private ActiveArea actArea2;
+	private ActiveArea actArea1;
 	
 
 	/**
@@ -123,6 +127,7 @@ public class GUI {
 		this.player2 = player2;
 		this.handListener = handListener;
 		this.benchListener = new BenchListener(game);
+		this.activeListener = new ActiveListener(game);
 		this.game =game;
 		initialize();
 	}
@@ -208,16 +213,15 @@ public class GUI {
 		dis2Btn.setBorder(BorderFactory.createEmptyBorder());
 		dis2Btn.setContentAreaFilled(false);
 
-		ActivePokemon act2Btn = new ActivePokemon(player2.active);
-		act2Btn.setBounds(910, 370, 100, 140);
-		act2Btn.setForeground(new Color(210, 105, 30));
-		act2Btn.setMinimumSize(new Dimension(150, 200));
-		act2Btn.setMaximumSize(new Dimension(150, 200));
+		actArea2 = new ActiveArea(player2);
+		actArea2.setBounds(910, 370, 100, 150);
+		
+		actArea2.setActiveListener(activeListener);
 
-		ActivePokemon act1Btn = new ActivePokemon(player1.active);
-		act1Btn.setBounds(910, 570, 100, 140);
-		act1Btn.setMinimumSize(new Dimension(150, 200));
-		act1Btn.setMaximumSize(new Dimension(150, 200));
+		actArea1 = new ActiveArea(player1);
+		actArea1.setBounds(910, 570, 100, 150);
+		actArea1.setActiveListener(activeListener);
+	
 
 		bench1 = new BenchArea(player1);
 		frmTest.add(bench1);
@@ -277,10 +281,10 @@ public class GUI {
 		frmTest.getContentPane().add(prz2Btn);
 		frmTest.getContentPane().add(prize2Txt);
 		frmTest.getContentPane().add(deck2Btn);
-		frmTest.getContentPane().add(act2Btn);
+		frmTest.getContentPane().add(actArea2);
 		frmTest.getContentPane().add(deck2Txt);
 		frmTest.getContentPane().add(deck1Txt);
-		frmTest.getContentPane().add(act1Btn);
+		frmTest.getContentPane().add(actArea1);
 		frmTest.getContentPane().add(deck1Btn);
 		frmTest.getContentPane().add(prize1Txt);
 		frmTest.getContentPane().add(prz1Btn);
@@ -292,6 +296,12 @@ public class GUI {
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	public ActiveArea getActArea2() {
+		return actArea2;
+	}
+	public ActiveArea getActArea1() {
+		return actArea1;
+	}
 	public HandArea getArea2() {
 		return area2;
 	}
