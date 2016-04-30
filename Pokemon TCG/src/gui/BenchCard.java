@@ -14,23 +14,20 @@ public class BenchCard extends JButton {
 		private Card card;
 		private Player player;
 		
-		public BenchCard(Player player)
+		public BenchCard(Player player,Card card)
 		{
 			super();
+			this.card = card;
+			setName(card.getName());
+			setPreferredSize(new Dimension(100, 140));
+			String path = "res/" + card.getName().toLowerCase() + ".jpg";
+			setIcon(new ImageIcon(path));
 			
 		}
 		public Card getCard()
 		{
 			return card;
 		}
-		public void setCard(Card card )
-		{
-			this.card = card;
-			setName(card.getName());
-			setPreferredSize(new Dimension(100, 140));
-			String path = "res/" + card.getName().toLowerCase() + ".jpg";
-			setIcon(new ImageIcon(path));
 
-		}
 	}
 	

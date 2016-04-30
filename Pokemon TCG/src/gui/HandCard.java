@@ -19,18 +19,16 @@ public class HandCard extends JButton{
 	public HandCard(Player player,Card card)
 	{
 		super();
+		this.player = player;
 		this.card = card;
 		setName(card.getName());
 		setPreferredSize(new Dimension(100, 140));
 		String path = "res/" + card.getName().toLowerCase() + ".jpg";
 		setIcon(new ImageIcon(path));
-//		this.addActionListener(new ActionListener() { 
-//			  public void actionPerformed(ActionEvent e) { 
-//				  System.out.println(card.getName());
-//				  player.setActive(card);
-//				  
-//			  } 
-//			} );
+
+	}
+	public Player getPlayer() {
+		return player;
 	}
 	public Card getCard()
 	{

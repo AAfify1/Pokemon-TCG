@@ -60,13 +60,14 @@ public class GUI {
 	private JTextField prize2Txt;
 	private JTextField prize1Txt;
 	private HandArea area1;
+	private HandArea area2;
 	private Player player1;
 	private Player player2;
 	private CardOverview card;
 	private HandListener handListener;
 	private BenchListener benchListener;
-	private BenchArea2 bench2;
-	private BenchArea2 bench1;
+	private BenchArea bench2;
+	private BenchArea bench1;
 	private GameManager game;
 	
 
@@ -139,7 +140,7 @@ public class GUI {
 
 		 try {
 		 frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new
-		 File("res/bg2.jpg")))));
+		 File("res/bg4.jpg")))));
 		 } catch (IOException e) {
 		 e.printStackTrace();
 		 }
@@ -151,7 +152,7 @@ public class GUI {
 		
 		
 
-		HandArea area2 = new HandArea(player2);
+		area2 = new HandArea(player2);
 		area2.setBounds(680, 30, 560, 160);
 		frmTest.add(area2);
 		area2.setHandListener(handListener);
@@ -182,7 +183,7 @@ public class GUI {
 		prize2Txt.setBounds(1340, 180, 22, 20);
 		prize2Txt.setColumns(2);
 
-		bench2 = new BenchArea2(player2);
+		bench2 = new BenchArea(player2);
 		frmTest.add(bench2);
 		bench2.setBounds(680, 200, 550, 156);
 		bench2.setBenchListener(benchListener);
@@ -218,7 +219,7 @@ public class GUI {
 		act1Btn.setMinimumSize(new Dimension(150, 200));
 		act1Btn.setMaximumSize(new Dimension(150, 200));
 
-		bench1 = new BenchArea2(player1);
+		bench1 = new BenchArea(player1);
 		frmTest.add(bench1);
 		bench1.setBounds(680, 730, 550, 156);
 		bench1.setBenchListener(benchListener);
@@ -291,16 +292,19 @@ public class GUI {
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	public BenchArea2 getBench2() {
+	public HandArea getArea2() {
+		return area2;
+	}
+	public BenchArea getBench2() {
 		return bench2;
 	}
-	public void setBench2(BenchArea2 bench2) {
+	public void setBench2(BenchArea bench2) {
 		this.bench2 = bench2;
 	}
-	public BenchArea2 getBench1() {
+	public BenchArea getBench1() {
 		return bench1;
 	}
-	public void setBench1(BenchArea2 bench1) {
+	public void setBench1(BenchArea bench1) {
 		this.bench1 = bench1;
 	}
 	public CardOverview getCardOverview() {

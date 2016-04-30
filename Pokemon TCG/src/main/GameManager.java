@@ -48,6 +48,8 @@ public class GameManager {
 	public void startGame() {
 		player1.setActive(true);
 		player2.setActive(false);
+		
+		
 
 	}
 

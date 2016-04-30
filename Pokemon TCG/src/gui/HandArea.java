@@ -46,7 +46,7 @@ public class HandArea extends JScrollPane {
 
 		setViewportView(cardPanel);
 		getViewport().setOpaque(false);
-		setOpaque(true);
+		setOpaque(false);
 		setBorder(BorderFactory.createEmptyBorder());
 		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);

@@ -1,41 +1,79 @@
-//package gui;
-//
-//import javax.swing.JPanel;
-//import javax.swing.JButton;
-//import javax.swing.border.EmptyBorder;
-//
-//import main.Card;
-//import main.Player;
-//
-//public class BenchArea extends JPanel {
-//	
-//	private Player player;
-//	
-//			
-//	public BenchArea(Player player) {
-//		setLayout(null);
-//		setOpaque(false);
-//		this.player = player;
-//		
-//		
-//		BenchCard btnNewButton = new BenchCard(player);
-//		btnNewButton.setBounds(10, 11, 100, 140);
-//		add(btnNewButton);
-//		
-//		BenchCard button =new BenchCard(player);
-//		button.setBounds(120, 11, 100, 140);
-//		add(button);
-//		
-//		BenchCard button_1 = new BenchCard(player);
-//		button_1.setBounds(230, 11, 100, 140);
-//		add(button_1);
-//		
-//		BenchCard button_2 = new BenchCard(player);
-//		button_2.setBounds(340, 11, 100, 140);
-//		add(button_2);
-//		
-//		BenchCard button_3 = new BenchCard(player);
-//		button_3.setBounds(450, 11, 100, 140);
-//		add(button_3);
-//	}
-//}
+package gui;
+
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import main.Card;
+import main.Player;
+
+import listeners.BenchListener;
+
+public class BenchArea extends JScrollPane {
+	private ArrayList<BenchCard> BenchCards;
+
+	private JPanel cardPanel;
+	private Player player;
+	private BenchListener BenchListener;
+
+	public ArrayList<BenchCard> getBenchCards() {
+		return BenchCards;
+	}
+
+	public BenchListener getBenchListener() {
+		return BenchListener;
+	}
+
+	public void setBenchListener(BenchListener BenchListener) {
+		this.BenchListener = BenchListener;
+	}
+
+	public BenchArea(Player player) {
+		super();
+		this.player = player;
+		BenchCards = new ArrayList<BenchCard>();
+
+		cardPanel = new JPanel();
+		cardPanel.setLayout(new FlowLayout());
+		cardPanel.setOpaque(false);
+		cardPanel.setSize(new Dimension(670, 111));
+
+		setViewportView(cardPanel);
+		getViewport().setOpaque(false);
+		setOpaque(false);
+		setBorder(BorderFactory.createEmptyBorder());
+		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		setSize(new Dimension(670, 111));
+	}
+
+	public void addCard(Card c) {
+
+		BenchCard card = new BenchCard(player, c);
+
+		card.addActionListener(BenchListener);
+		card.addMouseListener(BenchListener);
+
+		BenchCards.add(card);
+		cardPanel.add(card);
+		updateUI();
+
+	}
+
+	public void removeCard(JButton b) {
+		cardPanel.remove(b);
+		updateUI();
+	}
+
+	public void removeAllCards() {
+		for (JButton b : BenchCards)
+			removeCard(b);
+		BenchCards.clear();
+	}
+
+}
