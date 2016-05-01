@@ -152,7 +152,7 @@ public class GUI {
 		 
 		
 
-		frmTest.setForeground(new Color(135, 206, 250));
+		//frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
 		
 		
@@ -201,7 +201,7 @@ public class GUI {
 		deck2Btn.setBorder(BorderFactory.createEmptyBorder());
 		deck2Btn.setContentAreaFilled(false);
 
-		deck2Txt = new JTextField((String.valueOf(player2.deck.size())));
+		deck2Txt = new JTextField();
 		deck2Txt.setBounds(590, 520, 22, 20);
 		deck2Txt.setColumns(2);
 
@@ -244,7 +244,7 @@ public class GUI {
 		deck1Btn.setBorder(BorderFactory.createEmptyBorder());
 		deck1Btn.setContentAreaFilled(false);
 
-		deck1Txt = new JTextField((String.valueOf(player1.deck.size())));
+		deck1Txt = new JTextField();
 		deck1Txt.setBounds(1300, 540, 22, 20);
 		deck1Txt.setColumns(2);
 

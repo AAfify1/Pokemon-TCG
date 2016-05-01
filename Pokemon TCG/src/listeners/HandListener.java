@@ -19,6 +19,18 @@ import pokemons.Pokemon;
 public class HandListener implements ActionListener, MouseListener {
 
 	private GameManager game;
+	private String firstHandClick = "";
+	private HandCard energy;
+
+	public String getFirstHandClick() {
+		return firstHandClick;
+	}
+
+	public void setFirstHandClick(String firstHandClick) {
+		this.firstHandClick = firstHandClick;
+	}
+
+	private MouseEvent secondClick;
 
 	public HandListener(GameManager game) {
 		this.game = game;
@@ -29,56 +41,71 @@ public class HandListener implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		HandCard card = (HandCard) e.getSource();
 		Player player = card.getPlayer();
-		
-		if(game.getTurn() == 0){
-			
-			if (player.active.getName().equals("card")&&player.getName().equals(game.getPlayer1().getName()) && player.getActive()) {
 
-				if (card.getCard() instanceof Pokemon) {
+		if (card.getCard() instanceof Pokemon) {
+			if (game.getTurn() == 0) {
+
+				if (player.active.getName().equals("card") && player.getName().equals(game.getPlayer1().getName())) {
 
 					Card cardd = card.getCard();
-					ActivePokemon active = new ActivePokemon(cardd);
+					ActivePokemon active = new ActivePokemon(player, cardd);
 					game.getGui().getActArea1().setPokemon(active);
 					game.getPlayer1().hand.remove(cardd);
 					game.getGui().getArea1().removeCard(card);
 					game.getPlayer1().setActive(false);
-				}
-			} else if (player.active.getName().equals("card")&&player.getName().equals(game.getPlayer2().getName())&& player.getActive()) {
 
-				if (card.getCard() instanceof Pokemon) {
+				} else if (player.active.getName().equals("card")
+						&& player.getName().equals(game.getPlayer2().getName())) {
 
 					Card cardd = card.getCard();
-					ActivePokemon active = new ActivePokemon(cardd);
+					ActivePokemon active = new ActivePokemon(player, cardd);
 					game.getGui().getActArea2().setPokemon(active);
 					game.getPlayer2().hand.remove(cardd);
 					game.getGui().getArea2().removeCard(card);
 					game.getPlayer2().setActive(false);
-					
+
+				}
+
+			}
+
+			else if (player.getName().equals(game.getPlayer1().getName()) && player.getActive()) {
+
+				if (game.getGui().getBench1().getBenchCards().size() < 5) {
+
+					Card cardd = card.getCard();
+					game.getGui().getBench1().addCard(cardd);
+					game.getPlayer1().hand.remove(cardd);
+					game.getGui().getArea1().removeCard(card);
+				}
+			} else if (player.getName().equals(game.getPlayer2().getName()) && player.getActive()) {
+
+				if (game.getGui().getBench2().getBenchCards().size() < 5) {
+
+					Card cardd = card.getCard();
+					game.getGui().getBench2().addCard(cardd);
+					game.getPlayer2().hand.remove(cardd);
+					game.getGui().getArea2().removeCard(card);
 				}
 			}
-			
 		}
-		
-		else if (player.getName().equals(game.getPlayer1().getName()) && player.getActive()) {
 
-			if (card.getCard() instanceof Pokemon && game.getGui().getBench1().getBenchCards().size() < 5) {
-
-				Card cardd = card.getCard();
-				game.getGui().getBench1().addCard(cardd);
-				game.getPlayer1().hand.remove(cardd);
-				game.getGui().getArea1().removeCard(card);
+		else if (card.getCard() instanceof Energy) {
+			if (game.getTurn() == 0) {
 			}
-		} else if (player.getName().equals(game.getPlayer2().getName())&& player.getActive()) {
 
-			if (card.getCard() instanceof Pokemon && game.getGui().getBench2().getBenchCards().size() < 5) {
-
-				Card cardd = card.getCard();
-				game.getGui().getBench2().addCard(cardd);
-				game.getPlayer2().hand.remove(cardd);
-				game.getGui().getArea2().removeCard(card);
+			else {
+				firstHandClick = "Energy";
+				energy = card;
 			}
 		}
-		//else if (card.getCard() instanceof Energy)
+	}
+
+	public HandCard getEnergy() {
+		return energy;
+	}
+
+	public void setEnergy(HandCard energy) {
+		this.energy = energy;
 	}
 
 	@Override
@@ -110,7 +137,6 @@ public class HandListener implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println("TEst");
 
 	}
 

@@ -16,8 +16,20 @@ public class Pokemon extends Card {
 	private Boolean dead= false;
 	private int level = 0;
 	private Boolean hasAbility=false;;
+	protected Attack attack1;
+	protected Attack attack2;
+	protected Attack attack3;
 	
 	
+	public Attack getAttack1() {
+		return attack1;
+	}
+	public Attack getAttack2() {
+		return attack2;
+	}
+	public Attack getAttack3() {
+		return attack3;
+	}
 	public int getLevel() {
 		return level;
 	}

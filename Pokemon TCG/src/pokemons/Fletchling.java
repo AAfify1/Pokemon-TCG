@@ -1,7 +1,9 @@
 package pokemons;
 public class Fletchling extends Pokemon{
 	
-	private Attack attack1;
+
+
+	
 	public Fletchling()
 	{
 		super("Fletchling",

@@ -1,8 +1,7 @@
 package pokemons;
 public class Dunsparce extends Pokemon{
 	
-	private Attack attack1;
-	private Attack attack2;
+	
 	public Dunsparce()
 	{
 		super("Dunsparce",

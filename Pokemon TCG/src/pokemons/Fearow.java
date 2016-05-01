@@ -21,7 +21,7 @@ public class Fearow extends Pokemon {
 	{
 
 		String[] energies1 = {"C"};
-		 attack1= new Attack("Peck",2,energies1,30,"");
+		 attack1= new Attack("Peck",1,energies1,30,"");
 		 
 		 String[] energies2 = {"C","C","C","C"};
 		 attack2= new Attack("Drill Run",4,energies2,70,"Flip a coin. If heads, discard an Energy attached to your opponent's Active Pokémon.");

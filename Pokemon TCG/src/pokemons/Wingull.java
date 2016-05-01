@@ -1,6 +1,6 @@
 package pokemons;
 public class Wingull extends Pokemon {
-	private Attack attack1;
+	
 	public Wingull()
 	{
 		super("Wingull",

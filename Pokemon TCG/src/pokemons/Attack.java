@@ -109,16 +109,17 @@ public class Attack {
 	}
 	public void Fight(Pokemon me,Pokemon target)
 	{
+		int newDamage=this.damage;
 		canAttack(me);
 		if(canAttack)
 		{
 			if(me.getType().equals(target.getWeakness()))
 			{
-				damage=this.damage*2;
+				newDamage=this.damage*2;
 			}
-			if(me.getType().equals(target.getResistance()))
+			 if(me.getType().equals(target.getResistance()))
 			{
-				damage=this.damage-20;
+				newDamage=this.damage-20;
 			}
 			if(target.getHasAbility())
 			{
@@ -126,10 +127,10 @@ public class Attack {
 				String type = a.getType();
 				if(a.getWhenAttacked()&&type.equals("inDmgRed"))
 				{
-					damage = damage - a.getInDmgRed();
+					newDamage = damage - a.getInDmgRed();
 				}
 			}
-			int newHP = target.getHP()-this.damage;
+			int newHP = target.getHP()-newDamage;
 			if(newHP>0)
 			{
 				target.setHP(newHP);

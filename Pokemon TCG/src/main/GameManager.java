@@ -37,8 +37,8 @@ public class GameManager {
 
 	public GameManager() {
 		this.gui = new GUI(player1, player2, handListener,this);
-		gui.setDeck1Txt(new JTextField(String.valueOf(player1.deck.size())));
-		gui.setDeck2Txt(new JTextField(String.valueOf(player2.deck.size())));
+		gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
+		gui.getDeck2Txt().setText(String.valueOf(player2.deck.size()));
 		gui.setPrize1Txt(new JTextField(String.valueOf(player1.prize.size())));
 		gui.setPrize2Txt(new JTextField(String.valueOf(player2.prize.size())));
 		
@@ -50,8 +50,8 @@ public class GameManager {
 	}
 
 	public void startGame() {
-		player1.setActive(true);
-		player2.setActive(true);
+		player1.setActive(false);
+		player2.setActive(false);
 		
 		
 
@@ -59,23 +59,39 @@ public class GameManager {
 
 	public void endTurn() {
 		
+		System.out.println(turn);
+		
 		if(turn==0)
 		{
 			player1.setActive(true);
 			player2.setActive(false);
-			turn++; 
+			turn++;
+			player1.hand.draw(player1.deck);
+			gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
+			gui.getArea1().removeAllCards();
+			gui.getArea1().addNCards(player1.hand.getHand());
 		}
 		
 		else{
 		
-		if (player1.getActive()) {
+		if (!(turn%2 == 0)) {
+			
 			player1.setActive(false);
 			player2.setActive(true);
 			turn++;
-		} else if (player2.getActive()) {
+			
+			player2.hand.draw(player2.deck);
+			gui.getDeck2Txt().setText(String.valueOf(player2.deck.size()));
+			gui.getArea2().removeAllCards();
+			gui.getArea2().addNCards(player2.hand.getHand());
+		} else {
 			player1.setActive(true);
 			player2.setActive(false);
 			turn++;
+			player1.hand.draw(player1.deck);
+			gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
+			gui.getArea1().removeAllCards();
+			gui.getArea1().addNCards(player1.hand.getHand());
 		}
 		}
 	}

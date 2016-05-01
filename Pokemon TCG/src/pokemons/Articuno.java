@@ -14,6 +14,7 @@ public class Articuno extends Pokemon{
 				1,
 				"Metal",
 				"Fighting");
+		
 		setAttacks();
 	}
 	
