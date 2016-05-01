@@ -12,9 +12,23 @@ public class Player {
 	public String name;
 	private Boolean isActive =false;
 	public Pokemon active = new Pokemon("card"); 
+	private Boolean hasActive = false;
+	private Boolean addedEnergy = false;
 	
 	
 	
+
+	public Boolean getHasActive() {
+		return hasActive;
+	}
+
+
+
+	public void setHasActive(Boolean hasActive) {
+		this.hasActive = hasActive;
+	}
+
+
 
 	public Player(Deck deck, PrizeCards prize, String name) {
 		this.deck = deck;
@@ -69,6 +83,18 @@ public class Player {
 	public void draw()
 	{
 		hand.draw(deck);
+	}
+
+
+
+	public Boolean getAddedEnergy() {
+		return addedEnergy;
+	}
+
+
+
+	public void setAddedEnergy(Boolean addedEnergy) {
+		this.addedEnergy = addedEnergy;
 	}
 
 	

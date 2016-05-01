@@ -63,7 +63,7 @@ public class Attack {
 		this.effect = effect;
 	}
 
-	public void canAttack(Pokemon me){
+	public Boolean canAttack(Pokemon me){
 		
 		
 		int checker=0;
@@ -103,15 +103,17 @@ public class Attack {
 		}
 		if (checker==this.count){
 			canAttack= true;
+			return canAttack;
 		}
 		else canAttack= false;
+		return canAttack;
 		
 	}
 	public void Fight(Pokemon me,Pokemon target)
 	{
 		int newDamage=this.damage;
-		canAttack(me);
-		if(canAttack)
+		
+		if(canAttack(me))
 		{
 			if(me.getType().equals(target.getWeakness()))
 			{

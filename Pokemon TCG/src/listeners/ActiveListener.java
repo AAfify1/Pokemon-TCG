@@ -11,6 +11,7 @@ import energy.Energy;
 import gui.ActivePokemon;
 import gui.HandCard;
 import main.GameManager;
+import pokemons.Pokemon;
 
 public class ActiveListener implements ActionListener, MouseListener {
 
@@ -25,42 +26,49 @@ public class ActiveListener implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		ActivePokemon pokeCard = (ActivePokemon) e.getSource();
 		if (game.getHandListener().getFirstHandClick().equals("Energy")) {
-			
+
 			HandCard energyCard = game.getHandListener().getEnergy();
 			Energy energy = (Energy) energyCard.getCard();
-			if (pokeCard.getPlayer().getName().equals(game.getPlayer1().getName())&& pokeCard.getPlayer().getActive()) {
+			if (pokeCard.getPlayer().getName().equals(game.getPlayer1().getName())
+					&& pokeCard.getPlayer().getActive()) {
 				energy.attach(pokeCard.getPokemon());
 				game.getPlayer1().hand.remove(energy);
 				game.getGui().getArea1().removeCard(energyCard);
 				game.getHandListener().setFirstHandClick("");
-			}
-			else if (pokeCard.getPlayer().getName().equals(game.getPlayer2().getName())&& pokeCard.getPlayer().getActive()) {
+			} else if (pokeCard.getPlayer().getName().equals(game.getPlayer2().getName())
+					&& pokeCard.getPlayer().getActive()) {
 				energy.attach(pokeCard.getPokemon());
 				game.getPlayer2().hand.remove(energy);
 				game.getGui().getArea2().removeCard(energyCard);
 				game.getHandListener().setFirstHandClick("");
 			}
 		} else {
-			
-			if(game.getPlayer1().getName().equals(pokeCard.getPlayer().getName())&&game.getPlayer1().getActive())
-					{
 
-			game.getGui().getActArea1().getPokemon().getPokemon().getAttack1().Fight(
-					game.getGui().getActArea1().getPokemon().getPokemon(),
-					game.getGui().getActArea2().getPokemon().getPokemon());
-			game.endTurn();
+			if (game.getPlayer1().getName().equals(pokeCard.getPlayer().getName()) && game.getPlayer1().getActive()) {
 
-			System.out.println(game.getGui().getActArea2().getPokemon().getPokemon().getName() + ": " + String.valueOf(game.getGui().getActArea2().getPokemon().getPokemon().getHP()));
-					}
-			
-			else if(game.getPlayer2().getName().equals(pokeCard.getPlayer().getName())&&game.getPlayer2().getActive())
-			{
+				Pokemon attackingPokemon = game.getGui().getActArea1().getPokemon().getPokemon();
+				Pokemon defendingPokemon = game.getGui().getActArea2().getPokemon().getPokemon();
 
-	game.getGui().getActArea2().getPokemon().getPokemon().getAttack1().Fight(
-			game.getGui().getActArea2().getPokemon().getPokemon(),
-			game.getGui().getActArea1().getPokemon().getPokemon());
-game.endTurn();
-	System.out.println(game.getGui().getActArea1().getPokemon().getPokemon().getName() + ": " + String.valueOf(game.getGui().getActArea1().getPokemon().getPokemon().getHP()));
+				if (attackingPokemon.getAttack1().canAttack(attackingPokemon)) {
+					attackingPokemon.getAttack1().Fight(attackingPokemon, defendingPokemon);
+					game.endTurn();
+
+					System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				}
+			}
+
+			else if (game.getPlayer2().getName().equals(pokeCard.getPlayer().getName())
+					&& game.getPlayer2().getActive()) {
+
+				Pokemon attackingPokemon = game.getGui().getActArea2().getPokemon().getPokemon();
+				Pokemon defendingPokemon = game.getGui().getActArea1().getPokemon().getPokemon();
+
+				if (attackingPokemon.getAttack1().canAttack(attackingPokemon)) {
+					attackingPokemon.getAttack1().Fight(attackingPokemon, defendingPokemon);
+					game.endTurn();
+
+					System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				}
 			}
 
 		}
