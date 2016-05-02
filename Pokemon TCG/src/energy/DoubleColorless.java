@@ -5,7 +5,7 @@ import pokemons.Pokemon;
 public class DoubleColorless extends Energy {
 
 	public DoubleColorless() {
-		super("C");
+		super("Double Colorless","C");
 		// TODO Auto-generated constructor stub
 	}
 	public void attach(Pokemon target)

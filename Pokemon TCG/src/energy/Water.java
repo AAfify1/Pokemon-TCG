@@ -3,7 +3,7 @@ package energy;
 public class Water extends Energy {
 
 	public Water() {
-		super("W");
+		super("Water","W");
 		// TODO Auto-generated constructor stub
 	}
 
