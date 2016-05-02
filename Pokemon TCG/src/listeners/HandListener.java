@@ -51,6 +51,7 @@ public class HandListener implements ActionListener, MouseListener {
 					ActivePokemon active = new ActivePokemon(player, cardd);
 					game.getGui().getActArea1().setPokemon(active);
 					game.getPlayer1().hand.remove(cardd);
+					game.getPlayer1().setActive(cardd);
 					game.getGui().getArea1().removeCard(card);
 					game.getPlayer1().setHasActive(true);
 					game.getPlayer1().setActive(false);
@@ -62,6 +63,7 @@ public class HandListener implements ActionListener, MouseListener {
 					ActivePokemon active = new ActivePokemon(player, cardd);
 					game.getGui().getActArea2().setPokemon(active);
 					game.getPlayer2().hand.remove(cardd);
+					game.getPlayer2().setActive(cardd);
 					game.getGui().getArea2().removeCard(card);
 					game.getPlayer2().setHasActive(true);
 					game.getPlayer2().setActive(false);

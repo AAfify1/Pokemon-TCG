@@ -1,4 +1,7 @@
 package pokemons;
+import java.util.ArrayList;
+
+import gui.AttackButton;
 import main.Card;
 
 public class Pokemon extends Card {
@@ -19,6 +22,7 @@ public class Pokemon extends Card {
 	protected Attack attack1;
 	protected Attack attack2;
 	protected Attack attack3;
+	private ArrayList<AttackButton> attackButtons;
 	
 	
 	public Attack getAttack1() {
@@ -182,5 +186,11 @@ public class Pokemon extends Card {
 
 	
 
+	}
+	public ArrayList<AttackButton> getAttackButtons() {
+		return attackButtons;
+	}
+	public void setAttackButtons(ArrayList<AttackButton> attackButtons) {
+		this.attackButtons = attackButtons;
 	}
 }

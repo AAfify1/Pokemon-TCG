@@ -36,13 +36,14 @@ public class GameManager {
 	}
 
 	public GameManager() {
+		startGame();
 		this.gui = new GUI(player1, player2, handListener,this);
 		gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
 		gui.getDeck2Txt().setText(String.valueOf(player2.deck.size()));
 		gui.setPrize1Txt(new JTextField(String.valueOf(player1.prize.size())));
 		gui.setPrize2Txt(new JTextField(String.valueOf(player2.prize.size())));
 		
-		startGame();
+	
 	}
 
 	public GUI getGui() {

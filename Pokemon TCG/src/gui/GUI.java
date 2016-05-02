@@ -73,6 +73,7 @@ public class GUI {
 	private GameManager game;
 	private ActiveArea actArea2;
 	private ActiveArea actArea1;
+	private OptionPanel options;
 	
 
 	/**
@@ -128,6 +129,7 @@ public class GUI {
 		this.handListener = handListener;
 		this.benchListener = new BenchListener(game);
 		this.activeListener = new ActiveListener(game);
+		this.options = new OptionPanel(game);
 		this.game =game;
 		initialize();
 	}
@@ -270,7 +272,8 @@ public class GUI {
 		prize1Txt.setColumns(2);
 
 		card = new CardOverview();
-		card.setLocation(233, 390);
+		card.setLocation(100, 200);
+		options.setLocation(100, 650);
 		//lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
 
 		frmTest.getContentPane().setLayout(null);
@@ -288,6 +291,7 @@ public class GUI {
 		frmTest.getContentPane().add(deck1Btn);
 		frmTest.getContentPane().add(prize1Txt);
 		frmTest.getContentPane().add(prz1Btn);
+		frmTest.getContentPane().add(options);
 
 		frmTest.getContentPane().add(dis1Btn);
 
@@ -327,5 +331,11 @@ public class GUI {
 
 	public void setArea1(HandArea area1) {
 		this.area1 = area1;
+	}
+	public OptionPanel getOptions() {
+		return options;
+	}
+	public void setOptions(OptionPanel options) {
+		this.options = options;
 	}
 }

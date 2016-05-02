@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import energy.Energy;
 import gui.ActivePokemon;
 import gui.HandCard;
+import gui.OptionPanel;
 import main.GameManager;
 import pokemons.Pokemon;
 
@@ -48,6 +49,8 @@ public class ActiveListener implements ActionListener, MouseListener {
 
 				Pokemon attackingPokemon = game.getGui().getActArea1().getPokemon().getPokemon();
 				Pokemon defendingPokemon = game.getGui().getActArea2().getPokemon().getPokemon();
+				
+				game.getGui().getOptions().updateOptions();
 
 				if (attackingPokemon.getAttack1().canAttack(attackingPokemon)) {
 					attackingPokemon.getAttack1().Fight(attackingPokemon, defendingPokemon);
@@ -62,6 +65,8 @@ public class ActiveListener implements ActionListener, MouseListener {
 
 				Pokemon attackingPokemon = game.getGui().getActArea2().getPokemon().getPokemon();
 				Pokemon defendingPokemon = game.getGui().getActArea1().getPokemon().getPokemon();
+				
+				game.getGui().getOptions().updateOptions();
 
 				if (attackingPokemon.getAttack1().canAttack(attackingPokemon)) {
 					attackingPokemon.getAttack1().Fight(attackingPokemon, defendingPokemon);
