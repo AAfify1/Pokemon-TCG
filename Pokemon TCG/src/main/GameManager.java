@@ -98,6 +98,7 @@ public class GameManager {
 			gui.getArea1().addNCards(player1.hand.getHand());
 		}
 		}
+		getGui().getOptions().updateOptions();
 	}
 
 	public int getTurn() {

@@ -31,6 +31,7 @@ public class HandListener implements ActionListener, MouseListener {
 	}
 
 	private MouseEvent secondClick;
+	private Boolean clicked = false;
 
 	public HandListener(GameManager game) {
 		this.game = game;
@@ -39,6 +40,7 @@ public class HandListener implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		clicked = true;
 		HandCard card = (HandCard) e.getSource();
 		Player player = card.getPlayer();
 
@@ -54,7 +56,9 @@ public class HandListener implements ActionListener, MouseListener {
 					game.getPlayer1().setActive(cardd);
 					game.getGui().getArea1().removeCard(card);
 					game.getPlayer1().setHasActive(true);
+//					game.getGui().getOptions().updateOptions();
 					game.getPlayer1().setActive(false);
+					
 
 				} else if (!(game.getPlayer2().getHasActive())
 						&& player.getName().equals(game.getPlayer2().getName())) {
@@ -66,6 +70,7 @@ public class HandListener implements ActionListener, MouseListener {
 					game.getPlayer2().setActive(cardd);
 					game.getGui().getArea2().removeCard(card);
 					game.getPlayer2().setHasActive(true);
+//					game.getGui().getOptions().updateOptions();
 					game.getPlayer2().setActive(false);
 
 				}
@@ -131,7 +136,9 @@ public class HandListener implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		game.getGui().getCardOverview().resetImageIcon();
+		if(!clicked){
+			game.getGui().getCardOverview().resetImageIcon();
+		}
 	}
 
 	@Override

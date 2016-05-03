@@ -28,8 +28,8 @@ public class Pikachu extends Pokemon {
 
 		String[] energies1 = {"E"};
 		String[] energies2 = {"C","C"};
-		 attack1= new Attack("ThunderShock",1,energies1,10," ");
-		 attack2= new Attack("TailWhip",2,energies2,20," ");
+		 attack1= new Attack("Thundershock",1,energies1,10," ");
+		 attack2= new Attack("Tail Whap",2,energies2,20," ");
 		 AttackButton attackbutton1 = new AttackButton(attack1);
 		 AttackButton attackbutton2 = new AttackButton(attack2);
 		 attackButtons.add(attackbutton1);

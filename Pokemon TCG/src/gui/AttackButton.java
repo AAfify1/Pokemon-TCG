@@ -15,9 +15,17 @@ public class AttackButton extends JButton {
 	{	
 		setPreferredSize(new Dimension(150,15));
 		setVisible(true);
-		this.attack = attack;
+		this.setAttack(attack);
 		this.name = attack.getName();
 		setLabel(name);
+	}
+
+	public Attack getAttack() {
+		return attack;
+	}
+
+	public void setAttack(Attack attack) {
+		this.attack = attack;
 	}
 
 }

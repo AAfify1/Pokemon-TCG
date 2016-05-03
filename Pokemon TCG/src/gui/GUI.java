@@ -74,6 +74,7 @@ public class GUI {
 	private ActiveArea actArea2;
 	private ActiveArea actArea1;
 	private OptionPanel options;
+	private EnergyArea energyArea;
 	
 
 	/**
@@ -130,6 +131,7 @@ public class GUI {
 		this.benchListener = new BenchListener(game);
 		this.activeListener = new ActiveListener(game);
 		this.options = new OptionPanel(game);
+		this.energyArea = new EnergyArea(game);
 		this.game =game;
 		initialize();
 	}
@@ -273,7 +275,8 @@ public class GUI {
 
 		card = new CardOverview();
 		card.setLocation(100, 200);
-		options.setLocation(100, 650);
+		energyArea.setLocation(100, 650);
+		options.setLocation(100, 750);
 		//lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
 
 		frmTest.getContentPane().setLayout(null);
@@ -292,6 +295,7 @@ public class GUI {
 		frmTest.getContentPane().add(prize1Txt);
 		frmTest.getContentPane().add(prz1Btn);
 		frmTest.getContentPane().add(options);
+		frmTest.getContentPane().add(energyArea);
 
 		frmTest.getContentPane().add(dis1Btn);
 
@@ -300,6 +304,9 @@ public class GUI {
 		frmTest.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	public EnergyArea getEnergyArea() {
+		return energyArea;
+	}
 	public ActiveArea getActArea2() {
 		return actArea2;
 	}
