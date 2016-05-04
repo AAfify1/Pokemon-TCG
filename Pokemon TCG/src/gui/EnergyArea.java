@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -13,21 +14,22 @@ import javax.swing.JScrollPane;
 import energy.Energy;
 import main.GameManager;
 import pokemons.Pokemon;
+
 public class EnergyArea extends JScrollPane {
-	
+
 	private GameManager game;
 	private JPanel energyPanel;
-//	private ArrayList<JLabel> energies = new ArrayList<JLabel>();
-	
-	public EnergyArea(GameManager game)
-	{
+	// private ArrayList<Pokemon> pokemons = new ArrayList<Pokemon>();
+	// private ArrayList<JLabel> energies = new ArrayList<JLabel>();
+
+	public EnergyArea(GameManager game) {
 		super();
-		this.game=game;
-	
+		this.game = game;
+
 		energyPanel = new JPanel();
 		energyPanel.setLayout(new FlowLayout());
 		energyPanel.setOpaque(false);
-		energyPanel.setSize(new Dimension(300, 50));
+		energyPanel.setSize(new Dimension(300, 60));
 
 		setViewportView(energyPanel);
 		getViewport().setOpaque(false);
@@ -35,36 +37,45 @@ public class EnergyArea extends JScrollPane {
 		setBorder(BorderFactory.createEmptyBorder());
 		setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		setSize(new Dimension(300, 50));
-		
+		setSize(new Dimension(300, 60));
+
 	}
-//	public void addEnergy(Energy energy)
-//	{
-//		JLabel label = new JLabel();
-//		String path = "res/"+energy.getName().toLowerCase()+"Icon.jpg";
-//		label.setIcon(new ImageIcon(path));
-//		energyPanel.add(label);	
-//		}
-//	public void removeEnergy(Energy energy)
-//	{
-//		energyPanel.remove
-//	}
-	
-	public void display(Pokemon pokemon)
-	{
-		JLabel label = new JLabel();
+	// public void addEnergy(Energy energy)
+	// {
+	// JLabel label = new JLabel();
+	// String path = "res/"+energy.getName().toLowerCase()+"Icon.jpg";
+	// label.setIcon(new ImageIcon(path));
+	// energyPanel.add(label);
+	// }
+	// public void removeEnergy(Energy energy)
+	// {
+	// energyPanel.remove
+	// }
+
+	public void display(Pokemon pokemon) {
+
 		String[] energies = new String[20];
-		System.arraycopy( pokemon.getEnergies(), 0, energies, 0, 20);
-		for(String x : energies)
-		{
-			if(x !=null)
-			{
-				String path = "res/"+x+"Icon.jpg";
+
+		System.arraycopy(pokemon.getEnergies(), 0, energies, 0, 20);
+		for (String x : energies) {
+			if (x != null) {
+				JLabel label = new JLabel();
+				String path = "res/" + x + "Icon.png";
 				label.setIcon(new ImageIcon(path));
-				energyPanel.add(label);	
 				
+				energyPanel.add(label);
+
 			}
+
 		}
+
+		updateUI();
+	}
+
+	public void clear() {
+		energyPanel.removeAll();
+		energyPanel.repaint();
+		updateUI();
 	}
 
 }

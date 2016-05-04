@@ -47,7 +47,7 @@ public class HandListener implements ActionListener, MouseListener {
 		if (card.getCard() instanceof Pokemon) {
 			if (game.getTurn() == 0) {
 
-				if (!(game.getPlayer1().getHasActive())&& player.getName().equals(game.getPlayer1().getName())) {
+				if (!(game.getPlayer1().getHasActive()) && player.getName().equals(game.getPlayer1().getName())) {
 
 					Card cardd = card.getCard();
 					ActivePokemon active = new ActivePokemon(player, cardd);
@@ -56,9 +56,8 @@ public class HandListener implements ActionListener, MouseListener {
 					game.getPlayer1().setActive(cardd);
 					game.getGui().getArea1().removeCard(card);
 					game.getPlayer1().setHasActive(true);
-//					game.getGui().getOptions().updateOptions();
+					// game.getGui().getEnergyArea().add((Pokemon)cardd);
 					game.getPlayer1().setActive(false);
-					
 
 				} else if (!(game.getPlayer2().getHasActive())
 						&& player.getName().equals(game.getPlayer2().getName())) {
@@ -70,7 +69,7 @@ public class HandListener implements ActionListener, MouseListener {
 					game.getPlayer2().setActive(cardd);
 					game.getGui().getArea2().removeCard(card);
 					game.getPlayer2().setHasActive(true);
-//					game.getGui().getOptions().updateOptions();
+					// game.getGui().getEnergyArea().add((Pokemon)cardd);
 					game.getPlayer2().setActive(false);
 
 				}
@@ -105,12 +104,9 @@ public class HandListener implements ActionListener, MouseListener {
 			else {
 				firstHandClick = "Energy";
 				energy = card;
-				if(player.getName().equals(game.getPlayer2().getName()) && player.getActive())
-				{
+				if (player.getName().equals(game.getPlayer2().getName()) && player.getActive()) {
 					game.getPlayer2().setAddedEnergy(true);
-				}
-				else if (player.getName().equals(game.getPlayer1().getName()) && player.getActive())
-				{
+				} else if (player.getName().equals(game.getPlayer1().getName()) && player.getActive()) {
 					game.getPlayer1().setAddedEnergy(true);
 				}
 			}
@@ -136,7 +132,7 @@ public class HandListener implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(!clicked){
+		if (!clicked) {
 			game.getGui().getCardOverview().resetImageIcon();
 		}
 	}

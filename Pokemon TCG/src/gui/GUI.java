@@ -149,7 +149,7 @@ public class GUI {
 
 		 try {
 		 frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new
-		 File("res/bg4.jpg")))));
+		 File("res/bg3.jpg")))));
 		 } catch (IOException e) {
 		 e.printStackTrace();
 		 }

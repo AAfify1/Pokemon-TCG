@@ -28,6 +28,10 @@ public class ActiveListener implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		clicked = true;
 		ActivePokemon pokeCard = (ActivePokemon) e.getSource();
+		
+		
+	
+		
 		if (game.getHandListener().getFirstHandClick().equals("Energy")) {
 
 			HandCard energyCard = game.getHandListener().getEnergy();
@@ -64,9 +68,10 @@ public class ActiveListener implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if (!clicked) {
+		
 			game.getGui().getCardOverview().resetImageIcon();
-		}
+			game.getGui().getEnergyArea().clear();
+		
 
 	}
 
