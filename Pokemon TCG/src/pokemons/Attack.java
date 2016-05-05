@@ -1,16 +1,18 @@
 package pokemons;
 
+import java.util.ArrayList;
+
 public class Attack {
 
 	private String name;
-	private String[] energies;
+	private ArrayList<String> energies;
 	private int damage;
 	private String effect;
 	private int count;
 	private Boolean canAttack=false;
 	
 	
-	public Attack(String name,int count, String[] energies, int damage, String effect) {
+	public Attack(String name,int count, ArrayList<String> energies, int damage, String effect) {
 		this.damage=damage;
 		this.name=name;
 		this.energies=energies;
@@ -30,7 +32,7 @@ public class Attack {
 
 
 
-	public String[] getEnergies() {
+	public ArrayList<String> getEnergies() {
 		return energies;
 	}
 
@@ -68,21 +70,21 @@ public class Attack {
 		
 		int checker=0;
 		
-		String[] pokEn = me.getEnergies();
-		String[] temp = new String[pokEn.length];
-		System.arraycopy( pokEn, 0, temp, 0, pokEn.length );
-		String[] attEn = this.getEnergies();
+		ArrayList<String> pokEn = me.getEnergies();
+		ArrayList<String> temp = new ArrayList<String>(pokEn);
+		
+		ArrayList<String> attEn = this.getEnergies();
 		
 		for(int i=0;i<this.count;i++)
 		{
-			String x = attEn[i];
+			String x = attEn.get(i);
 			if (x.equals("C")){
 				for(int j=0;j<me.getCount();j++)
 				{
-					if(!temp[j].equals(""))
+					if(!temp.get(j).equals(""))
 					{
 						checker++;
-						temp[j] = "";
+						temp.set(j,"");
 						break;
 					}
 				}
@@ -92,9 +94,9 @@ public class Attack {
 				for(int j=0;j<me.getCount();j++)
 			
 			{
-				if(x.equals(temp[j]))
+				if(x.equals(temp.get(j)))
 				{
-					temp[j]="";
+					temp.set(j,"");
 					checker++;
 					break;
 				}

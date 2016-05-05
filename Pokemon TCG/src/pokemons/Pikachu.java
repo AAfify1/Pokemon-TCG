@@ -1,6 +1,7 @@
 package pokemons;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import gui.AttackButton;
 
@@ -26,8 +27,8 @@ public class Pikachu extends Pokemon {
 	public void setAttacks()
 	{
 
-		String[] energies1 = {"E"};
-		String[] energies2 = {"C","C"};
+		ArrayList<String> energies1 = new ArrayList<String>(Arrays.asList("E"));
+		ArrayList<String> energies2 = new ArrayList<String>(Arrays.asList("C","C"));
 		 attack1= new Attack("Thundershock",1,energies1,10," ");
 		 attack2= new Attack("Tail Whap",2,energies2,20," ");
 		 AttackButton attackbutton1 = new AttackButton(attack1);

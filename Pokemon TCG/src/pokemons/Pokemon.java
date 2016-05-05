@@ -14,14 +14,14 @@ public class Pokemon extends Card {
 	private int retreatCost;
 	private String weakness;
 	private String resistance;
-	private String[] energies=new String[20];
+	private ArrayList<String> energies=new ArrayList<String>();
 	private int count=0;
 	private Boolean dead= false;
 	private int level = 0;
 	private Boolean hasAbility=false;;
-	protected Attack attack1;
-	protected Attack attack2;
-	protected Attack attack3;
+	private Attack attack1;
+	private Attack attack2;
+	private Attack attack3;
 	private ArrayList<AttackButton> attackButtons;
 	
 	
@@ -99,23 +99,24 @@ public class Pokemon extends Card {
 	public Boolean getHasAbility() {
 		return hasAbility;
 	}
-	public String[] getEnergies() {
+	public ArrayList<String> getEnergies() {
 		return energies;
 	}
 	public void removeEnergy(String energy)
 	{
-		for(int i=0; i<count; i++)
+		for (String x : energies)
 		{
-			if(energies[i].equals(energy))
+			if(x.equals(energy))
 			{
-				energies[i] = "";
-				count--;
+				energies.remove(x);
+				break;
 			}
 		}
+		
 	}
 	public void setEnergies(String energy) {
 		
-		energies[count]= energy;
+		energies.add(energy);
 		count++;
 	}
 	public int getCount() {

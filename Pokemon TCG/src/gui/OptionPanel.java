@@ -21,7 +21,7 @@ public class OptionPanel extends JPanel {
 	private GameManager game;
 	private Pokemon pokemon;
 	private ArrayList<AttackButton> attackButtons;
-	private RetreatButton retreat = new RetreatButton();
+	private RetreatButton retreat;
 	private AttackListener attackListener;
 	
 	
@@ -42,6 +42,18 @@ public class OptionPanel extends JPanel {
 		
 		
 		
+	}
+	
+	public void retreatSetter()
+	{
+		if(game.getPlayer1().getActive())
+		{
+			retreat = new RetreatButton(game.getPlayer1().active);
+		}
+		else if (game.getPlayer2().getActive())
+		{
+			retreat = new RetreatButton(game.getPlayer2().active);
+		}
 	}
 		
 		public void updateOptions()
@@ -68,6 +80,7 @@ public class OptionPanel extends JPanel {
 		
 		private void addButtons()
 		{
+			retreatSetter();
 			for(AttackButton x : attackButtons)
 			{
 				

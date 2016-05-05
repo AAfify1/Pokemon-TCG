@@ -7,6 +7,7 @@ import javax.swing.JButton;
 
 import main.Card;
 import main.Player;
+import pokemons.Pokemon;
 
 public class BenchCard extends JButton {
 	
@@ -18,6 +19,7 @@ public class BenchCard extends JButton {
 		{
 			super();
 			this.card = card;
+			this.player = player;
 			setName(card.getName());
 			setPreferredSize(new Dimension(100, 140));
 			String path = "res/" + card.getName().toLowerCase() + ".jpg";
@@ -28,6 +30,12 @@ public class BenchCard extends JButton {
 		{
 			return card;
 		}
-
+		public Player getPlayer() {
+			return player;
+		}
+		public Pokemon getPokemon()
+		{
+			return (Pokemon) card;
+		}
 	}
 	

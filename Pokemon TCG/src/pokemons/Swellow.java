@@ -1,8 +1,15 @@
 package pokemons;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import gui.AttackButton;
+
 public class Swellow extends Pokemon {
 
 	private Attack attack1;
 	private Attack attack2;
+	private ArrayList<AttackButton> attackButtons = new ArrayList<AttackButton>();
 	
 	public Swellow()
 	{
@@ -22,11 +29,15 @@ public class Swellow extends Pokemon {
 	public void setAttacks()
 	{
 
-		String[] energies1 = {"C","C"};
+		ArrayList<String> energies1 = new ArrayList<String>(Arrays.asList("C","C"));
 		 attack1= new Attack("Peck",2,energies1,30,"");
 		 
-		 String[] energies2 = {"C","C","C"};
+		 ArrayList<String> energies2 = new ArrayList<String>(Arrays.asList("C","C","C"));
 		 attack2= new Attack("Wing Attack",3,energies2,50,"");
+		 AttackButton attackbutton1 = new AttackButton(attack1);
+		 AttackButton attackbutton2 = new AttackButton(attack2);
+		 attackButtons.add(attackbutton1);
+		 attackButtons.add(attackbutton2);
 		 
 	}
 	public Attack getAttack2() {
@@ -35,4 +46,8 @@ public class Swellow extends Pokemon {
 	public Attack getAttack1(){
 		return attack1;
 	}
+	public ArrayList<AttackButton> getAttackButtons() {
+		return attackButtons;
+	}
+
 }

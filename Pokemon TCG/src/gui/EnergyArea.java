@@ -54,9 +54,9 @@ public class EnergyArea extends JScrollPane {
 
 	public void display(Pokemon pokemon) {
 
-		String[] energies = new String[20];
+		ArrayList<String> energies = new ArrayList<String>(pokemon.getEnergies());
 
-		System.arraycopy(pokemon.getEnergies(), 0, energies, 0, 20);
+		
 		for (String x : energies) {
 			if (x != null) {
 				JLabel label = new JLabel();

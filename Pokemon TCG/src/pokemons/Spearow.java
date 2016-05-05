@@ -1,6 +1,7 @@
 package pokemons;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import gui.AttackButton;
 
@@ -24,7 +25,7 @@ public class Spearow extends Pokemon {
 	public void setAttacks()
 	{
 
-		String[] energies1 = {"C","C"};
+		ArrayList<String> energies1 = new ArrayList<String>(Arrays.asList("C","C"));
 		 attack1= new Attack("Peck",2,energies1,30,"");
 		 AttackButton attackbutton1 = new AttackButton(attack1);
 		 attackButtons.add(attackbutton1);

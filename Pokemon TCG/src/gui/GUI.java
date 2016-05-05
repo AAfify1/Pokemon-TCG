@@ -75,56 +75,64 @@ public class GUI {
 	private ActiveArea actArea1;
 	private OptionPanel options;
 	private EnergyArea energyArea;
-	
 
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					GUI window = new GUI();
-//					window.frmTest.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	// public static void main(String[] args) {
+	// EventQueue.invokeLater(new Runnable() {
+	// public void run() {
+	// try {
+	// GUI window = new GUI();
+	// window.frmTest.setVisible(true);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// });
+	// }
 
 	public JTextField getDeck2Txt() {
 		return deck2Txt;
 	}
+
 	public void setDeck2Txt(JTextField deck2Txt) {
 		this.deck2Txt = deck2Txt;
 	}
+
 	public JTextField getDeck1Txt() {
 		return deck1Txt;
 	}
+
 	public void setDeck1Txt(JTextField deck1Txt) {
 		this.deck1Txt = deck1Txt;
 	}
+
 	public JTextField getPrize2Txt() {
 		return prize2Txt;
 	}
+
 	public void setPrize2Txt(JTextField prize2Txt) {
 		this.prize2Txt = prize2Txt;
 	}
+
 	public JTextField getPrize1Txt() {
 		return prize1Txt;
 	}
+
 	public void setPrize1Txt(JTextField prize1Txt) {
 		this.prize1Txt = prize1Txt;
 	}
+
 	/**
 	 * Create the application.
 	 */
 	public GUI() {
-		
+
 		initialize();
 	}
-	public GUI(Player player1,Player player2,HandListener handListener,GameManager game) {
+
+	public GUI(Player player1, Player player2, HandListener handListener, GameManager game) {
 		this.player1 = player1;
 		this.player2 = player2;
 		this.handListener = handListener;
@@ -132,7 +140,7 @@ public class GUI {
 		this.activeListener = new ActiveListener(game);
 		this.options = new OptionPanel(game);
 		this.energyArea = new EnergyArea(game);
-		this.game =game;
+		this.game = game;
 		initialize();
 	}
 
@@ -147,26 +155,20 @@ public class GUI {
 		frmTest.setTitle("Pokemon");
 		frmTest.setResizable(true);
 
-		 try {
-		 frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new
-		 File("res/bg3.jpg")))));
-		 } catch (IOException e) {
-		 e.printStackTrace();
-		 }
-		 
-		
+		try {
+			frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/bg3.jpg")))));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		//frmTest.setForeground(new Color(135, 206, 250));
+		// frmTest.setForeground(new Color(135, 206, 250));
 		frmTest.getContentPane().setBackground(Color.WHITE);
-		
-		
 
 		area2 = new HandArea(player2);
 		area2.setBounds(680, 30, 560, 160);
 		frmTest.add(area2);
 		area2.setHandListener(handListener);
 		area2.addNCards(player2.hand.getHand());
-		
 
 		JButton prz2Btn = new JButton();
 		prz2Btn.setBounds(1300, 30, 100, 140);
@@ -175,18 +177,15 @@ public class GUI {
 		prz2Btn.setIcon(new ImageIcon("res/pcard.jpg"));
 		prz2Btn.setBorder(BorderFactory.createEmptyBorder());
 		prz2Btn.setContentAreaFilled(false);
-		
+
 		JButton endTurn = new JButton("END TURN");
-		endTurn.setBounds(910,520,100,30);
+		endTurn.setBounds(910, 520, 100, 30);
 		frmTest.add(endTurn);
-		endTurn.addActionListener(new ActionListener()
-		{
-		  public void actionPerformed(ActionEvent e)
-		  {
-		   game.endTurn();
-		  }
+		endTurn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				game.endTurn();
+			}
 		});
-		
 
 		prize2Txt = new JTextField((String.valueOf(player2.prize.size())));
 		prize2Txt.setBounds(1340, 180, 22, 20);
@@ -219,13 +218,12 @@ public class GUI {
 
 		actArea2 = new ActiveArea(player2);
 		actArea2.setBounds(910, 370, 100, 150);
-		
+
 		actArea2.setActiveListener(activeListener);
 
 		actArea1 = new ActiveArea(player1);
 		actArea1.setBounds(910, 570, 100, 150);
 		actArea1.setActiveListener(activeListener);
-	
 
 		bench1 = new BenchArea(player1);
 		frmTest.add(bench1);
@@ -277,7 +275,7 @@ public class GUI {
 		card.setLocation(100, 200);
 		energyArea.setLocation(100, 650);
 		options.setLocation(100, 750);
-		//lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
+		// lblImage.setIcon(new ImageIcon("res/cardback.jpg"));
 
 		frmTest.getContentPane().setLayout(null);
 
@@ -307,27 +305,35 @@ public class GUI {
 	public EnergyArea getEnergyArea() {
 		return energyArea;
 	}
+
 	public ActiveArea getActArea2() {
 		return actArea2;
 	}
+
 	public ActiveArea getActArea1() {
 		return actArea1;
 	}
+
 	public HandArea getArea2() {
 		return area2;
 	}
+
 	public BenchArea getBench2() {
 		return bench2;
 	}
+
 	public void setBench2(BenchArea bench2) {
 		this.bench2 = bench2;
 	}
+
 	public BenchArea getBench1() {
 		return bench1;
 	}
+
 	public void setBench1(BenchArea bench1) {
 		this.bench1 = bench1;
 	}
+
 	public CardOverview getCardOverview() {
 		return card;
 	}
@@ -339,9 +345,11 @@ public class GUI {
 	public void setArea1(HandArea area1) {
 		this.area1 = area1;
 	}
+
 	public OptionPanel getOptions() {
 		return options;
 	}
+
 	public void setOptions(OptionPanel options) {
 		this.options = options;
 	}
