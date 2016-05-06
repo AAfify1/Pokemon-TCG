@@ -17,7 +17,7 @@ public class Dunsparce extends Pokemon{
 				false ,
 				60,
 				2,
-				1,
+				0,
 				"Fighting",
 				"");
 		setAttacks();

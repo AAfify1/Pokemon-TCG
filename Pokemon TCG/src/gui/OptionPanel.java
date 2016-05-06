@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import listeners.AttackListener;
+import listeners.RetreatListenerr;
 import main.GameManager;
 import pokemons.Pokemon;
 
@@ -93,6 +94,8 @@ public class OptionPanel extends JPanel {
 				updateUI();
 			}
 			retreat.setVisible(true);
+			retreat.addMouseListener(game.getRetreatListner());
+			retreat.addActionListener(game.getRetreatListner());
 			add(retreat);
 			attackButtons.clear();
 		}

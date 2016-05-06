@@ -30,6 +30,8 @@ public class ActiveArea extends JPanel {
 	public void setPokemon(ActivePokemon actPokemon) {
 		this.actPokemon = actPokemon;
 		pokemon = actPokemon.getPokemon();
+		actPokemon.getPlayer().active = pokemon;
+		
 	
 		
 		String path = "res/" + pokemon.getName().toLowerCase()+".jpg";
@@ -42,7 +44,14 @@ public class ActiveArea extends JPanel {
 	public Player getPlayer() {
 		return player;
 	}
-
+public void removePokemon()
+{
+	removeAll();
+	repaint();
+	updateUI();
+	
+	
+}
 	public ActiveArea(Player player)
 	{
 		this.player = player;
