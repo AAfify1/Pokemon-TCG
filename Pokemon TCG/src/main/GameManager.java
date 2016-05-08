@@ -71,6 +71,7 @@ public class GameManager {
 			turn++;
 			player1.hand.draw(player1.deck);
 			player1.setAddedEnergy(false);
+			player1.setCanRetreat(false);
 			gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
 			gui.getArea1().removeAllCards();
 			gui.getArea1().addNCards(player1.hand.getHand());
@@ -86,6 +87,7 @@ public class GameManager {
 			
 			player2.hand.draw(player2.deck);
 			player2.setAddedEnergy(false);
+			player2.setCanRetreat(true);
 			gui.getDeck2Txt().setText(String.valueOf(player2.deck.size()));
 			gui.getArea2().removeAllCards();
 			gui.getArea2().addNCards(player2.hand.getHand());
@@ -95,6 +97,7 @@ public class GameManager {
 			turn++;
 			player1.hand.draw(player1.deck);
 			player1.setAddedEnergy(false);
+			player1.setCanRetreat(true);
 			gui.getDeck1Txt().setText(String.valueOf(player1.deck.size()));
 			gui.getArea1().removeAllCards();
 			gui.getArea1().addNCards(player1.hand.getHand());

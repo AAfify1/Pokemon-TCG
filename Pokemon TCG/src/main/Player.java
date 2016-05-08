@@ -14,6 +14,7 @@ public class Player {
 	public Pokemon active = new Pokemon("card"); 
 	private Boolean hasActive = false;
 	private Boolean addedEnergy = false;
+	private Boolean canRetreat = true;
 	
 	
 	
@@ -96,6 +97,22 @@ public class Player {
 	public void setAddedEnergy(Boolean addedEnergy) {
 		this.addedEnergy = addedEnergy;
 	}
+
+
+
+	public Boolean getCanRetreat() {
+		return canRetreat;
+	}
+
+
+
+	public void setCanRetreat(Boolean canRetreat) {
+		this.canRetreat = canRetreat;
+	}
+
+
+
+
 
 	
 }

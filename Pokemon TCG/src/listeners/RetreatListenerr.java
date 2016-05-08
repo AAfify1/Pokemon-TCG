@@ -31,6 +31,7 @@ public class RetreatListenerr implements ActionListener, MouseListener {
 			 {
 				 retreat = true;
 				 
+				 
 			 }
 			
 		}
@@ -41,6 +42,7 @@ public class RetreatListenerr implements ActionListener, MouseListener {
 			 if (has>=cost)
 			 {
 				 retreat = true;
+				 
 				
 			 }
 			

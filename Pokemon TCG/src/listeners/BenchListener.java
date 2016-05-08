@@ -32,7 +32,7 @@ public class BenchListener implements ActionListener, MouseListener {
 BenchCard pokeCard = (BenchCard) e.getSource();
 Pokemon pokemon = pokeCard.getPokemon();
 	
-	if (game.getRetreatListner().getRetreat()&& game.getPlayer1().getActive())
+	if (game.getRetreatListner().getRetreat()&& game.getPlayer1().getActive() && game.getPlayer1().getCanRetreat())
 	{
 		Pokemon temp = game.getPlayer1().active;
 		for (int i=0 ; i< temp.getRetreatCost();i++)
@@ -42,13 +42,15 @@ Pokemon pokemon = pokeCard.getPokemon();
 		game.getGui().getActArea1().removePokemon();
 		game.getGui().getActArea1().setPokemon(new ActivePokemon(game.getPlayer1(),pokemon));
 		game.getGui().getBench1().removeCard(pokeCard);
+		game.getGui().getBench1().getBenchCards().remove(pokeCard);
 		game.getGui().getBench1().addCard(temp);
 		game.getRetreatListner().setRetreat(false);
 		game.getGui().getOptions().updateOptions();
+		game.getPlayer1().setCanRetreat(false);
 		
 	}
 	
-	else if (game.getRetreatListner().getRetreat()&& game.getPlayer2().getActive())
+	else if (game.getRetreatListner().getRetreat()&& game.getPlayer2().getActive() && game.getPlayer2().getCanRetreat())
 	{
 		Pokemon temp = game.getPlayer2().active;
 		for (int i=0 ; i< temp.getRetreatCost();i++)
@@ -58,9 +60,11 @@ Pokemon pokemon = pokeCard.getPokemon();
 		game.getGui().getActArea2().removePokemon();
 		game.getGui().getActArea2().setPokemon(new ActivePokemon(game.getPlayer2(),pokemon));
 		game.getGui().getBench2().removeCard(pokeCard);
+		game.getGui().getBench2().getBenchCards().remove(pokeCard);
 		game.getGui().getBench2().addCard(temp);
 		game.getRetreatListner().setRetreat(false);
 		game.getGui().getOptions().updateOptions();
+		game.getPlayer2().setCanRetreat(false);
 		
 		
 	}
