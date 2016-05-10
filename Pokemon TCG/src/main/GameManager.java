@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 
 import gui.GUI;
 import listeners.ActiveListener;
+import listeners.AttackListener;
 import listeners.HandListener;
 import listeners.RetreatListenerr;
 
@@ -17,6 +18,7 @@ public class GameManager {
 	private GUI gui;
 	private HandListener handListener = new HandListener(this);
 	private RetreatListenerr retreatListner = new RetreatListenerr(this);
+	private AttackListener attackListner = new AttackListener(this);
 	
 
 	
@@ -104,7 +106,8 @@ public class GameManager {
 		}
 		}
 		getGui().getOptions().updateOptions();
-	}
+		this.getRetreatListner().setRetreat(false);	
+		}
 
 	public int getTurn() {
 		return turn;
@@ -116,5 +119,13 @@ public class GameManager {
 
 	public void setRetreatListner(RetreatListenerr retreatListner) {
 		this.retreatListner = retreatListner;
+	}
+
+	public AttackListener getAttackListner() {
+		return attackListner;
+	}
+
+	public void setAttackListner(AttackListener attackListner) {
+		this.attackListner = attackListner;
 	}
 }

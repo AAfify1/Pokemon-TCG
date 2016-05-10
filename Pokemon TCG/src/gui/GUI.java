@@ -156,7 +156,7 @@ public class GUI {
 		frmTest.setResizable(true);
 
 		try {
-			frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/bg3.jpg")))));
+			frmTest.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/bg4.jpg")))));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

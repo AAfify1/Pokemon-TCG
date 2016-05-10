@@ -31,8 +31,33 @@ public class BenchListener implements ActionListener, MouseListener {
 	
 BenchCard pokeCard = (BenchCard) e.getSource();
 Pokemon pokemon = pokeCard.getPokemon();
+
+if (game.getAttackListner().getFatality()&& game.getPlayer2().getActive())
+{
+	ActivePokemon act = new ActivePokemon(game.getPlayer1(),pokemon);
 	
-	if (game.getRetreatListner().getRetreat()&& game.getPlayer1().getActive() && game.getPlayer1().getCanRetreat())
+	game.getGui().getActArea1().setPokemon(act);
+	game.getGui().getBench1().removeCard(pokeCard);
+	game.getGui().getBench1().getBenchCards().remove(pokeCard);
+	game.getAttackListner().setFatality(false);
+	game.getGui().getOptions().updateOptions();
+	game.endTurn();
+	
+}
+else if (game.getAttackListner().getFatality()&& game.getPlayer1().getActive())
+{
+	ActivePokemon act = new ActivePokemon(game.getPlayer2(),pokemon);
+	game.getGui().getActArea2().removePokemon();
+	game.getGui().getActArea2().setPokemon(act);
+	game.getGui().getBench2().removeCard(pokeCard);
+	game.getGui().getBench2().getBenchCards().remove(pokeCard);
+	game.getAttackListner().setFatality(false);
+	game.getGui().getOptions().updateOptions();
+	game.endTurn();
+	
+}
+	
+else if (game.getRetreatListner().getRetreat()&& game.getPlayer1().getActive() && game.getPlayer1().getCanRetreat())
 	{
 		Pokemon temp = game.getPlayer1().active;
 		for (int i=0 ; i< temp.getRetreatCost();i++)

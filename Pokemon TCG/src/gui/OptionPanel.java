@@ -35,7 +35,7 @@ public class OptionPanel extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		setOpaque(false);
 		
-		attackListener =  new AttackListener(game);
+		attackListener = game.getAttackListner();
 		
 		
 		

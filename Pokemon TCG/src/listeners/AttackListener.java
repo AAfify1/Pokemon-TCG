@@ -14,6 +14,7 @@ import pokemons.Pokemon;
 public class AttackListener implements ActionListener, MouseListener  {
 	
 	private GameManager game;
+	private Boolean fatality = false;
 
 	public AttackListener(GameManager game) {
 		this.game = game;
@@ -66,9 +67,18 @@ public class AttackListener implements ActionListener, MouseListener  {
 
 			if (attackButton.getAttack().canAttack(attackingPokemon)) {
 				attackButton.getAttack().Fight(attackingPokemon, defendingPokemon);
-				game.endTurn();
+				
+				if(defendingPokemon.getDead()&& game.getGui().getBench2().getBenchCards().size()!=0)
+				{
+					setFatality(true);
+					game.getGui().getActArea2().removePokemon();
+				}
+				else{
+					game.endTurn();
+					System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				}
 
-				System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				
 			}
 		}
 
@@ -81,12 +91,28 @@ public class AttackListener implements ActionListener, MouseListener  {
 
 			if (attackButton.getAttack().canAttack(attackingPokemon)) {
 				attackButton.getAttack().Fight(attackingPokemon, defendingPokemon);
-				game.endTurn();
+				
+				if(defendingPokemon.getDead()&& game.getGui().getBench1().getBenchCards().size()!=0)
+				{
+					setFatality(true);
+					game.getGui().getActArea1().removePokemon();
+				}
 
-				System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				else{
+					game.endTurn();
+					System.out.println(defendingPokemon.getName() + ": " + String.valueOf(defendingPokemon.getHP()));
+				}
 			}
 		}
 		
+	}
+
+	public Boolean getFatality() {
+		return fatality;
+	}
+
+	public void setFatality(Boolean fatality) {
+		this.fatality = fatality;
 	}
 
 }
