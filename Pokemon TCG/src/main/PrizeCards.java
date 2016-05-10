@@ -20,11 +20,11 @@ public class PrizeCards extends Pile {
 		if (this.size() == 1)
 		{
 			System.out.println("mabrook yasta");
-			return this.pop();
+			return super.pop();
 		}
 		else 
 			{
-			return this.pop();
+			return super.pop();
 			}
 	}
 

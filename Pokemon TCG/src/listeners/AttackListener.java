@@ -72,6 +72,8 @@ public class AttackListener implements ActionListener, MouseListener  {
 				{
 					setFatality(true);
 					game.getGui().getActArea2().removePokemon();
+					game.getPlayer1().hand.drawP();
+					
 				}
 				else{
 					game.endTurn();
@@ -96,6 +98,7 @@ public class AttackListener implements ActionListener, MouseListener  {
 				{
 					setFatality(true);
 					game.getGui().getActArea1().removePokemon();
+					game.getPlayer2().hand.drawP();
 				}
 
 				else{

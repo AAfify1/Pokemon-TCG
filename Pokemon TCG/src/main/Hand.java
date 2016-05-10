@@ -12,7 +12,10 @@ public class Hand {
 	{
 		this.player = player;
 	}
-	
+	public void drawP()
+	{
+		hand.add(player.prize.pop());
+	}
 	public void draw(Deck deck,int N)
 	{
 		for(int i =0; i<N;i++)

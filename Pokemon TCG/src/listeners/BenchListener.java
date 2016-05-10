@@ -47,7 +47,7 @@ if (game.getAttackListner().getFatality()&& game.getPlayer2().getActive())
 else if (game.getAttackListner().getFatality()&& game.getPlayer1().getActive())
 {
 	ActivePokemon act = new ActivePokemon(game.getPlayer2(),pokemon);
-	game.getGui().getActArea2().removePokemon();
+	
 	game.getGui().getActArea2().setPokemon(act);
 	game.getGui().getBench2().removeCard(pokeCard);
 	game.getGui().getBench2().getBenchCards().remove(pokeCard);
